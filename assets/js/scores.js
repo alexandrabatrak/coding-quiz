@@ -2,7 +2,6 @@ let highScores = JSON.parse(localStorage.getItem('highScores')) || [];
 const endScreen = document.getElementById('end-screen');
 
 export function scores(score) {
-  let highScoresOl = document.getElementById('highscores');
   let finalScore = document.getElementById('final-score');
   let initials = document.getElementById('initials');
   const submit = document.getElementById('submit');
@@ -13,8 +12,10 @@ export function scores(score) {
         score: score,
         initials: initials.value.toUpperCase(),
       };
-      highScores.push(highScoresObj);
-      localStorage.setItem('highScores', JSON.stringify(highScores));
+      while (highScores.lenght <= 100) {
+        highScores.push(highScoresObj);
+        localStorage.setItem('highScores', JSON.stringify(highScores));
+      }
       console.log(highScores);
       initials.value = '';
 
@@ -59,27 +60,44 @@ function validateInitials(initials) {
 
 // get the scores
 function getHighScores() {
+  let highScoresOl = document.getElementById('highscores');
+  // it's annoyingly wanna find this on index.html
+  if (!highScoresOl) {
+    return;
+  }
   scores = JSON.parse(localStorage.getItem('highScores')) || [];
+  // sort for highest scores
+  scores = scores.sort((x, y) => y.score - x.score);
+  // show only last 10
+  let highestScores = scores.slice(0, 10);
+  highScoresOl.innerHTML = `
+    <table>
+      <thead>
+        <tr>
+          <th>Rank</th>
+          <th>Initials</th>
+          <th>Score</th>
+        </tr>
+      </thead>
+      <tbody>
+        ${highestScores
+          .map(
+            (score, index) =>
+              `<tr>
+                <td>${index + 1}</td>
+                <td>${score.initials}</td>
+                <td>${score.score}</td>
+              </tr>`
+          )
+          .join('')}
+      </tbody>
+    </table>`;
 
-  scores.forEach((score) => {
-    highScoresOl.innerHTML = [highScores.initials, highScores.score]
-      .map(
-        (score, index) =>
-          `<li data-index=${index + 1} class="score">${score.initials} ~ ${
-            score.score
-          }</li>`
-      )
-      .join('');
-  });
   console.log(scores);
 }
 
-// // Sort high scores
-function sortScores(scores) {
-  return scores.sort((x, y) => y.score - x.score);
-}
-
-function init() {
+// call functions only when highscores.html is loaded
+window.addEventListener('load', () => {
   getHighScores();
   sortScores();
-}
+});
