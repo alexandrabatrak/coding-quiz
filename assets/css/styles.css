@@ -106,10 +106,16 @@ main {
 }
 
 .wrapper {
+  width: 90%;
+  margin: 0 1rem;
   padding: 4rem;
   background: rgba(255, 255, 255, 0.25);
   backdrop-filter: blur(15px);
   border: 1px solid var(--black);
+}
+
+#questions {
+  min-height: 300px;
 }
 
 .subtitle {
@@ -137,6 +143,11 @@ main {
   font-style: italic;
   margin-top: 1.5rem;
   padding-top: 1rem;
+  opacity: 0;
+}
+
+.feedback.show {
+  opacity: 1;
 }
 
 .hide {
