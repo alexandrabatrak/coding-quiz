@@ -1,6 +1,5 @@
 import { questions } from './questions.js';
 import { scores } from './scores.js';
-// import Moment.js
 
 // get elements
 const startScreen = document.getElementById('start-screen');
@@ -8,52 +7,87 @@ const startBtn = document.getElementById('start');
 let questionsDiv = document.getElementById('questions');
 let questionH = document.getElementById('question-title');
 let choices = document.getElementById('choices');
-// const nextBtn = document.getElementById('next');
 const endScreen = document.getElementById('end-screen');
+let finalScore = document.getElementById('final-score');
 let feedback = document.getElementById('feedback');
 
-function questionShow() {
-  let question = questions();
-  let questionTitle = question.title;
-  let answers = question.answers;
-  let correctAnswer = question.correct;
-  questionH.innerHTML = questionTitle;
-  choices.innerHTML = answers
-    .map(
-      (answer, index) =>
-        `<li><input type="radio" name="answer" value="${answer}" id="answer-${index}">${answer}</li>`
-    )
-    .join('');
-
-  choices.addEventListener('change', (e) => {
-    let selectedAnswer = e.target.value;
-    if (selectedAnswer === answers[correctAnswer]) {
-      feedback.classList.add('show');
-      feedback.innerHTML = 'Correct!';
-    } else {
-      feedback.classList.add('show');
-      feedback.innerHTML = 'Wrong!';
-    }
-    setTimeout(() => {
-      feedback.classList.remove('show');
-      questionShow();
-    }, 1000);
-  });
-}
-
-function startQuiz() {
-  // add questions
-  startScreen.classList.add('hide');
-  questionsDiv.classList.remove('hide');
-  questionShow();
-  // nextBtn.addEventListener('click', questionShow);
-  // initialise timer
-  // new moment.duration(3000).timer({ loop: true }, callback);
-}
+let score = 0;
 
 // start quiz
 startBtn.addEventListener('click', startQuiz);
 
-// when done or timer runs out
-// startScreen.classList.add('hide');
-// endScreen.classList.remove('hide');
+// questionIndex is incremented progressively when handleAnswer code is within event listener. Add removeEventListener to prevent it reacting extra
+let questionIndex = 0;
+let questionsList = questions();
+let listOptions;
+
+// display question with options (from shuffled array of object)
+function questionShow() {
+  // if (questionIndex < questionsList.length) {
+  let question = questionsList[questionIndex];
+  questionH.innerHTML = question.title;
+  choices.innerHTML = question.answers
+    .map(
+      (answer, index) =>
+        `<button type="button" value="${answer}" id="answer-${index}" data-index=${
+          index + 1
+        } class="quiz-option">${answer}</button>`
+    )
+    .join('');
+
+  // eventHadler for choice buttons
+  listOptions = choices.querySelectorAll('button');
+  listOptions.forEach((listOption) => {
+    listOption.addEventListener('click', processAnswer);
+  });
+  // }
+}
+
+// choice button callback function
+function processAnswer(e) {
+  let selectedAnswer = e.target.value;
+  let listOption = e.target;
+  let question = questionsList[questionIndex];
+  let correctAnswer = question.answers[question.correct];
+  if (selectedAnswer === correctAnswer) {
+    listOption.classList.add('correct');
+    feedback.classList.add('show');
+    feedback.innerHTML = 'Correct!';
+    // increment score value
+    score++;
+  } else {
+    listOption.classList.add('wrong');
+    feedback.classList.add('show');
+    feedback.innerHTML = 'Wrong!';
+    // timer -10s
+  }
+  listOptions.forEach((listOption) => {
+    listOption.removeEventListener('click', processAnswer);
+  });
+  setTimeout(() => {
+    feedback.classList.remove('show');
+    if (questionIndex === questionsList.length - 1) {
+      // end of the quiz
+      endQuiz();
+    } else {
+      questionIndex++;
+      questionShow();
+    }
+  }, 1000);
+}
+
+// init
+function startQuiz() {
+  // remove startScreen add questions
+  startScreen.classList.add('hide');
+  questionsDiv.classList.remove('hide');
+  questionShow();
+}
+
+function endQuiz() {
+  // end of the quiz
+  questionsDiv.classList.add('hide');
+  endScreen.classList.remove('hide');
+  finalScore.textContent = score;
+  scores(score);
+}
