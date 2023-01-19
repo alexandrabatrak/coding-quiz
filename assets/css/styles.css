@@ -1,7 +1,8 @@
 :root {
   font-size: 18px;
   --black: #17202d;
-  --accent: #69768b;
+  --primary: #4a576b;
+  --secondary: #8c97a9;
   --light: #afb7b9;
 }
 body {
@@ -13,7 +14,7 @@ body {
 }
 
 h1 {
-  color: #69768b;
+  color: var(--primary);
   font-size: 3rem;
   font-style: italic;
   margin: 0 auto 2rem;
@@ -22,13 +23,13 @@ h1 {
 }
 
 a {
-  color: #17202d;
+  color: var(--black);
   text-decoration: none;
   transition: color 0.1s;
 }
 
 a:hover {
-  color: #69768b;
+  color: var(--primary);
 }
 
 button {
@@ -46,7 +47,7 @@ button {
 
 #start {
   font-size: 1.2rem;
-  background-color: #8c97a9;
+  background-color: var(--secondary);
   border: 1px solid var(--black);
   padding: 1rem 2rem;
   text-transform: uppercase;
@@ -54,11 +55,11 @@ button {
 }
 
 button:hover {
-  background-color: #8c97a9;
+  background-color: var(--secondary);
 }
 
 #start:hover {
-  color: #afb7b9;
+  color: var(--light);
   background-color: var(--black);
 }
 
@@ -82,7 +83,7 @@ li {
 }
 
 li:nth-child(odd) {
-  background-color: #afb7b9;
+  background-color: var(--light);
 }
 
 main {
