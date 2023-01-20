@@ -1,9 +1,10 @@
 let highScores = JSON.parse(localStorage.getItem('highScores')) || [];
+let highScoresOl = document.getElementById('highscores');
 const endScreen = document.getElementById('end-screen');
 
 export function scores(score) {
-  let finalScore = document.getElementById('final-score');
-  let initials = document.getElementById('initials');
+  const finalScore = document.getElementById('final-score');
+  const initials = document.getElementById('initials');
   const submit = document.getElementById('submit');
 
   submit.addEventListener('click', (e) => {
@@ -12,7 +13,7 @@ export function scores(score) {
         score: score,
         initials: initials.value.toUpperCase(),
       };
-      while (highScores.lenght <= 100) {
+      if (highScores.length <= 100) {
         highScores.push(highScoresObj);
         localStorage.setItem('highScores', JSON.stringify(highScores));
       }
@@ -20,6 +21,8 @@ export function scores(score) {
       initials.value = '';
 
       // endScreen
+      let buttonContainer = document.createElement('div');
+      buttonContainer.classList.add('button-container');
       let startAgainBtn = document.createElement('button');
       startAgainBtn.setAttribute('id', 'start-again-button');
       startAgainBtn.innerHTML = `<a href="index.html">Start again</a>`;
@@ -30,8 +33,9 @@ export function scores(score) {
       // replace p with buttons
       let endP = endScreen.querySelectorAll('p');
       endP.forEach((p) => p.classList.add('hide'));
-      endScreen.appendChild(startAgainBtn);
-      endScreen.appendChild(highScoresBtn);
+      buttonContainer.appendChild(startAgainBtn);
+      buttonContainer.appendChild(highScoresBtn);
+      endScreen.appendChild(buttonContainer);
     } else {
       return;
     }
@@ -53,15 +57,16 @@ function validateInitials(initials) {
 }
 
 // clear highscores
-// const clear = document.getElementById('clear');
-// clear.addEventListener('click', () => {
-//   localStorage.removeItem('highScores');
-// });
+const clear = document.getElementById('clear');
+if (clear) {
+  clear.addEventListener('click', () => {
+    localStorage.removeItem('highScores');
+    highScoresOl.innerHTML = '';
+  });
+}
 
 // get the scores
 function getHighScores() {
-  let highScoresOl = document.getElementById('highscores');
-  // it's annoyingly wanna find this on index.html
   if (!highScoresOl) {
     return;
   }
@@ -70,34 +75,34 @@ function getHighScores() {
   scores = scores.sort((x, y) => y.score - x.score);
   // show only last 10
   let highestScores = scores.slice(0, 10);
-  highScoresOl.innerHTML = `
-    <table>
-      <thead>
-        <tr>
-          <th>Rank</th>
-          <th>Initials</th>
-          <th>Score</th>
-        </tr>
-      </thead>
-      <tbody>
-        ${highestScores
-          .map(
-            (score, index) =>
-              `<tr>
-                <td>${index + 1}</td>
-                <td>${score.initials}</td>
-                <td>${score.score}</td>
-              </tr>`
-          )
-          .join('')}
-      </tbody>
-    </table>`;
-
-  console.log(scores);
+  // create table if more than 1 score saved
+  if (scores.length > 0) {
+    highScoresOl.innerHTML = `
+      <table>
+        <thead>
+          <tr>
+            <th>Rank</th>
+            <th>Initials</th>
+            <th>Score</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${highestScores
+            .map(
+              (score, index) =>
+                `<tr>
+                  <td>${index + 1}</td>
+                  <td>${score.initials}</td>
+                  <td>${score.score}</td>
+                </tr>`
+            )
+            .join('')}
+        </tbody>
+      </table>`;
+  }
 }
 
 // call functions only when highscores.html is loaded
 window.addEventListener('load', () => {
   getHighScores();
-  sortScores();
 });
