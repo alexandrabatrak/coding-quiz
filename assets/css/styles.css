@@ -5,12 +5,38 @@
   --secondary: #8c97a9;
   --light: #afb7b9;
 }
+
+/* TODO: Add style to endscreen */
+/* TODO: Add style to choices */
+
 body {
   font-family: 'Baskervville', serif;
   font-size: 1.2rem;
   padding: 0;
   margin: 0;
   color: var(--black);
+}
+
+body:after {
+  content: 'Alexandra Batrak © 2023';
+  color: var(--light);
+  transform: rotate(-90deg);
+  position: absolute;
+  left: -3rem;
+  top: 50%;
+  font-size: 1rem;
+}
+
+body:before {
+  content: '*';
+  width: 1rem;
+  height: 1rem;
+  color: var(--light);
+  position: absolute;
+  top: 2rem;
+  left: 2rem;
+  z-index: 2;
+  font-size: 2rem;
 }
 
 h1 {
@@ -47,7 +73,7 @@ button {
 
 #start {
   font-size: 1.2rem;
-  background-color: var(--secondary);
+  background-color: white;
   border: 1px solid var(--black);
   padding: 1rem 2rem;
   text-transform: uppercase;
@@ -65,10 +91,56 @@ button:hover {
 
 .choices button {
   display: block;
+  width: 100%;
+  position: relative;
+  font-size: 1.2rem;
+  text-align: left;
+}
+
+.choices .correct {
+  background-color: #597e75;
+  color: white;
+}
+
+.choices .wrong {
+  background-color: #704055;
+  color: white;
+}
+
+.choices button:before {
+  content: attr(data-index);
+  height: inherit;
+  width: 10px;
+  position: absolute;
+  top: 0;
+  left: -1.5rem;
+  font-size: 2rem;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.input-group {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  border: 1px solid var(--black);
+}
+
+.input-group > * {
+  margin: 0.5rem;
 }
 
 input[type='text'] {
-  font-size: 100%;
+  font-size: 1rem;
+  padding: 0.5rem 0;
+  flex-grow: 1;
+}
+
+.input-group button {
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 ol {
@@ -87,13 +159,15 @@ li:nth-child(odd) {
 }
 
 main {
-  height: 100vh;
-  height: 100dvh;
+  height: calc(100vh - 2rem);
+  height: calc(100dvh - 2rem);
+  margin: 1rem 1rem 1rem 5rem;
   background-image: url(../images/bg.jpg);
   background-position: center;
   background-size: cover;
   background-attachment: fixed;
   position: relative;
+  overflow: hidden;
 }
 
 .container {
@@ -118,10 +192,19 @@ main {
   min-height: 300px;
 }
 
-.subtitle {
+.subtitle,
+#final-score {
   font-weight: bold;
 }
 
+#end-screen span.subtitle,
+#end-screen p:first-of-type {
+  display: inline;
+}
+
+.button-container > * {
+  margin: 1rem 1rem 1rem 0;
+}
 .scores,
 .timer {
   position: absolute;
@@ -135,8 +218,20 @@ main {
 }
 
 .timer {
-  right: 1em;
+  right: 0;
+  padding: 1rem;
+  background: white;
   font-size: 2rem;
+  font-style: italic;
+  text-transform: lowercase;
+  transform: translateX(2rem);
+  opacity: 0;
+  transition: all 0.5s ease-in-out;
+}
+
+.timer.show {
+  opacity: 1;
+  transform: translateX(0);
 }
 
 .feedback {
@@ -152,4 +247,31 @@ main {
 
 .hide {
   display: none;
+}
+
+#highscores,
+#highscores table {
+  width: 100%;
+}
+
+#highscores th {
+  text-align: left;
+  font-size: 1.2rem;
+  text-transform: lowercase;
+}
+
+#highscores tbody tr {
+  font-size: 1.5rem;
+}
+
+#highscores tbody tr td:first-child {
+  color: var(--secondary);
+  font-weight: bold;
+  width: 15%;
+}
+
+#highscores tbody tr td:nth-child(n + 1) {
+  color: var(--primary);
+  text-transform: uppercase;
+  font-size: 1.2rem;
 }
