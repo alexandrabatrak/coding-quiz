@@ -6,9 +6,6 @@
   --light: #afb7b9;
 }
 
-/* TODO: Add style to endscreen */
-/* TODO: Add style to choices */
-
 body {
   font-family: 'Baskervville', serif;
   font-size: 1.2rem;
@@ -17,26 +14,24 @@ body {
   color: var(--black);
 }
 
-body:after {
-  content: 'Alexandra Batrak © 2023';
-  color: var(--light);
-  transform: rotate(-90deg);
-  position: absolute;
-  left: -3rem;
-  top: 50%;
-  font-size: 1rem;
-}
-
 body:before {
   content: '*';
   width: 1rem;
   height: 1rem;
   color: var(--light);
   position: absolute;
-  top: 2rem;
-  left: 2rem;
+  top: 0.75rem;
+  left: 1rem;
   z-index: 2;
   font-size: 2rem;
+}
+
+body:after {
+  content: 'Alexandra Batrak © 2023';
+  display: flex;
+  color: var(--light);
+  margin: 0.5rem;
+  font-size: 1rem;
 }
 
 h1 {
@@ -46,6 +41,11 @@ h1 {
   margin: 0 auto 2rem;
   padding-bottom: 1rem;
   border-bottom: 1px solid var(--black);
+}
+
+h2 {
+  word-break: break-word;
+  font-size: 1.5rem;
 }
 
 a {
@@ -61,7 +61,7 @@ a:hover {
 button {
   display: inline-block;
   cursor: pointer;
-  font-size: 1rem;
+  font-size: 1.25rem;
   font-family: 'Baskerville', serif;
   color: var(--black);
   background-color: transparent;
@@ -93,8 +93,9 @@ button:hover {
   display: block;
   width: 100%;
   position: relative;
+  display: flex;
+  align-items: center;
   font-size: 1.2rem;
-  text-align: left;
 }
 
 .choices .correct {
@@ -111,10 +112,11 @@ button:hover {
   content: attr(data-index);
   height: inherit;
   width: 10px;
-  position: absolute;
+  position: relative;
   top: 0;
-  left: -1.5rem;
+  left: -0.25rem;
   font-size: 2rem;
+  padding: 0 0.5rem 0 0;
   color: rgba(255, 255, 255, 0.5);
 }
 
@@ -159,15 +161,15 @@ li:nth-child(odd) {
 }
 
 main {
-  height: calc(100vh - 2rem);
-  height: calc(100dvh - 2rem);
-  margin: 1rem 1rem 1rem 5rem;
+  min-height: calc(100vh - 5.25rem);
+  min-height: calc(100dvh - 5.25rem);
+  height: 100%;
+  margin: 3rem 0.5rem 0.5rem;
   background-image: url(../images/bg.jpg);
   background-position: center;
   background-size: cover;
   background-attachment: fixed;
-  position: relative;
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
 .container {
@@ -176,13 +178,13 @@ main {
   align-items: center;
   height: 100%;
   max-width: 768px;
-  margin: 0 auto;
+  margin: 1rem auto 0;
 }
 
 .wrapper {
-  width: 90%;
-  margin: 0 1rem;
-  padding: 4rem;
+  width: 100%;
+  margin: 0 0.5rem 1rem;
+  padding: 2rem;
   background: rgba(255, 255, 255, 0.25);
   backdrop-filter: blur(15px);
   border: 1px solid var(--black);
@@ -205,28 +207,28 @@ main {
 .button-container > * {
   margin: 1rem 1rem 1rem 0;
 }
-.scores,
-.timer {
-  position: absolute;
-  top: 1em;
-}
 
 .scores {
-  left: 1em;
   padding: 0.25rem 0;
   border-bottom: 1px solid;
+  width: fit-content;
+  padding-top: 1rem;
+  position: absolute;
+  top: -0.25rem;
+  right: 1.75rem;
 }
 
 .timer {
   right: 0;
+  width: fit-content;
+  margin: 0.5rem 0 0 auto;
   padding: 1rem;
   background: white;
-  font-size: 2rem;
+  font-size: 1.5em;
   font-style: italic;
   text-transform: lowercase;
-  transform: translateX(2rem);
   opacity: 0;
-  transition: all 0.5s ease-in-out;
+  transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
 }
 
 .timer.show {
@@ -254,6 +256,10 @@ main {
   width: 100%;
 }
 
+#highscores table {
+  padding-bottom: 2rem;
+}
+
 #highscores th {
   text-align: left;
   font-size: 1.2rem;
@@ -267,11 +273,139 @@ main {
 #highscores tbody tr td:first-child {
   color: var(--secondary);
   font-weight: bold;
-  width: 15%;
 }
 
 #highscores tbody tr td:nth-child(n + 1) {
   color: var(--primary);
   text-transform: uppercase;
   font-size: 1.2rem;
+}
+
+/* speaker icon */
+/* https://codepen.io/atesgoral/details/RLPGaZ */
+.speaker {
+  background: currentColor;
+  background-clip: content-box;
+  width: 1em;
+  height: 1em;
+  border: 0.333em solid transparent;
+  border-right-color: currentColor;
+  position: absolute;
+  top: 1.1rem;
+  left: 3rem;
+  appearance: none;
+}
+
+.speaker.on:before,
+.speaker.on:after {
+  content: '';
+  background: currentColor;
+  width: 0.1em;
+  position: absolute;
+}
+
+.speaker.on:before {
+  height: 0.333em;
+  right: -0.533em;
+}
+
+.speaker.on:after {
+  height: 0.667em;
+  right: -0.733em;
+  top: -50%;
+}
+
+.speaker.off:before,
+.speaker.off:after {
+  content: '';
+  background: currentColor;
+  width: 0.1em;
+  position: absolute;
+  height: 1.2em;
+  margin-top: -0.333em;
+  top: -0.1em;
+  left: 0.15em;
+  transform: translateX(0.333em) rotate(-45deg);
+}
+
+.speaker.off:before {
+  background: #04233d;
+  left: 0.2em;
+}
+
+.reveal {
+  opacity: 0;
+  transition: opacity 0.5s linear;
+}
+
+.reveal.show {
+  opacity: 1;
+}
+
+@media (min-width: 992px) {
+  body:after {
+    transform: rotate(-90deg);
+    position: absolute;
+    left: -3rem;
+    top: 50%;
+  }
+
+  body:before {
+    position: absolute;
+    top: 1.5rem;
+    left: 2rem;
+  }
+
+  main {
+    height: calc(100vh - 2rem);
+    height: calc(100dvh - 2rem);
+    margin: 1rem 1rem 1rem 5rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .wrapper {
+    width: 90%;
+    margin: 0 1rem;
+    padding: 4rem;
+  }
+
+  .scores {
+    left: 1rem;
+  }
+
+  .timer {
+    position: absolute;
+    top: 0.5rem;
+    font-size: 2.5em;
+    transform: translateX(2rem);
+  }
+
+  h1 {
+    font-size: 4rem;
+  }
+
+  h2 {
+    font-size: 2.5rem;
+  }
+
+  .choices button {
+    font-size: 1.5rem;
+  }
+
+  .choices button:before {
+    position: absolute;
+    top: 0;
+    left: -1.5rem;
+  }
+
+  #highscores tbody tr td:first-child {
+    width: 15%;
+  }
+
+  .speaker {
+    top: auto;
+    left: 1.5rem;
+    bottom: 2rem;
+  }
 }
