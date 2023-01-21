@@ -22,7 +22,7 @@ export function scores(score) {
 
       // endScreen
       let buttonContainer = document.createElement('div');
-      buttonContainer.classList.add('button-container');
+      buttonContainer.classList.add('button-container', 'reveal');
       let startAgainBtn = document.createElement('button');
       startAgainBtn.setAttribute('id', 'start-again-button');
       startAgainBtn.innerHTML = `<a href="index.html">Start again</a>`;
@@ -36,6 +36,9 @@ export function scores(score) {
       buttonContainer.appendChild(startAgainBtn);
       buttonContainer.appendChild(highScoresBtn);
       endScreen.appendChild(buttonContainer);
+      setTimeout(() => {
+        buttonContainer.classList.add('show');
+      }, 200);
     } else {
       return;
     }
@@ -80,7 +83,7 @@ function getHighScores() {
     highScoresOl.innerHTML = `
       <table>
         <thead>
-          <tr>
+          <tr class="reveal">
             <th>Rank</th>
             <th>Initials</th>
             <th>Score</th>
@@ -90,7 +93,7 @@ function getHighScores() {
           ${highestScores
             .map(
               (score, index) =>
-                `<tr>
+                `<tr class="reveal">
                   <td>${index + 1}</td>
                   <td>${score.initials}</td>
                   <td>${score.score}</td>
@@ -100,9 +103,10 @@ function getHighScores() {
         </tbody>
       </table>`;
   }
+  setTimeout(() => {
+    const elements = document.querySelectorAll('.reveal');
+    elements.forEach((element) => element.classList.add('show'));
+  }, 100);
 }
 
-// call functions only when highscores.html is loaded
-window.addEventListener('load', () => {
-  getHighScores();
-});
+getHighScores();

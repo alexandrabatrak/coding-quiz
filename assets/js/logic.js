@@ -1,95 +1,111 @@
 import { questions } from './questions.js';
 import { scores } from './scores.js';
 
+// loader
+window.addEventListener('load', () => {
+  const loader = document.getElementById('loader');
+  setTimeout(() => {
+    loader.classList.add('remove');
+    setTimeout(() => {
+      [...startScreen.children].forEach((child) => {
+        child.classList.add('show');
+      });
+    }, 200);
+  }, 200);
+});
+
+// sounds
+const startSound = new Audio();
+startSound.src = './assets/sfx/start.wav';
+const correctSound = new Audio();
+correctSound.src = './assets/sfx/correct.wav';
+const wrongSound = new Audio();
+wrongSound.src = './assets/sfx/wrong.wav';
+const quizOver = new Audio();
+quizOver.src = './assets/sfx/quiz-over.mp3';
+const quizOverTimer = new Audio();
+quizOverTimer.src = './assets/sfx/quiz-over-timer.mp3';
+
 // get elements
 const startScreen = document.getElementById('start-screen');
 const startBtn = document.getElementById('start');
-let questionsDiv = document.getElementById('questions');
-let questionH = document.getElementById('question-title');
-let choices = document.getElementById('choices');
+const questionsDiv = document.getElementById('questions');
+const questionTitle = document.getElementById('question-title');
+const choices = document.getElementById('choices');
 const endScreen = document.getElementById('end-screen');
-let finalScore = document.getElementById('final-score');
-let feedback = document.getElementById('feedback');
+const finalScore = document.getElementById('final-score');
+const inputGroup = endScreen.querySelectorAll('.reveal');
+const feedback = document.getElementById('feedback');
+const soundToggle = document.getElementById('speaker');
 
-let timeSpan = document.getElementById('time');
-let timer = document.querySelector('.timer');
+// timer variables
+const timeSpan = document.getElementById('time');
+const timer = document.querySelector('.timer');
 let time;
 let countdownTimer;
-function startTimer() {
-  countdownTimer = setInterval(() => {
-    time--;
-    timeSpan.innerHTML = time;
-    timer.classList.add('show');
-    if (time <= 0) {
-      setTimeout(() => {
-        endQuiz();
-        let title = document.querySelector('#end-screen p');
-        let subtitle = document.createElement('span');
-        subtitle.setAttribute('class', 'subtitle');
-        subtitle.textContent = `Time is up! `;
-        endScreen.insertBefore(subtitle, title);
-      }, 500);
-    }
-  }, 1000);
-}
 
+// question variables
 let score = 0;
-// start quiz
-startBtn.addEventListener('click', startQuiz);
-
-// questionIndex is incremented progressively when handleAnswer code is within event listener. Add removeEventListener to prevent it reacting extra
 let questionIndex = 0;
 let questionsList = questions();
-let listOptions;
+let answerButtons;
 
 // display question with options (from shuffled array of object)
 function questionShow() {
-  // if (questionIndex < questionsList.length) {
+  questionTitle.classList.remove('show');
   let question = questionsList[questionIndex];
-  questionH.innerHTML = question.title;
+  questionTitle.innerText = question.title;
+  setTimeout(() => {
+    questionTitle.classList.add('show');
+  }, 200);
   choices.innerHTML = question.answers
     .map(
       (answer, index) =>
         `<button type="button" value="${answer}" id="answer-${index}" data-index=${
           index + 1
-        } class="quiz-option">${answer}</button>`
+        } class="quiz-option reveal">${answer}</button>`
     )
     .join('');
-
   // eventHadler for choice buttons
-  listOptions = choices.querySelectorAll('button');
-  listOptions.forEach((listOption) => {
-    listOption.addEventListener('click', processAnswer);
+  // doesn't like to be outside of the questionShow()
+  answerButtons = choices.querySelectorAll('button');
+  answerButtons.forEach((answerButton) => {
+    setTimeout(() => {
+      answerButton.classList.add('show');
+    }, 200);
+    answerButton.addEventListener('click', processAnswer);
   });
-  // }
 }
 
 // choice button callback function
 function processAnswer(e) {
   let selectedAnswer = e.target.value;
-  let listOption = e.target;
+  let answerButton = e.target;
   let question = questionsList[questionIndex];
   let correctAnswer = question.answers[question.correct];
   if (selectedAnswer === correctAnswer) {
-    listOption.classList.add('correct');
-    var correctSound = new Audio();
-    correctSound.src = './assets/sfx/correct.wav';
-    correctSound.play();
+    answerButton.classList.add('correct');
+    if (soundToggle.checked) {
+      correctSound.play();
+    }
     feedback.classList.add('show');
-    feedback.innerHTML = 'Correct!';
+    feedback.innerText = 'Correct!';
     // increment score value
     score++;
   } else {
-    listOption.classList.add('wrong');
-    var wrongSound = new Audio();
-    wrongSound.src = './assets/sfx/incorrect.wav';
-    wrongSound.play();
+    answerButton.classList.add('wrong');
+    if (soundToggle.checked) {
+      wrongSound.play();
+    }
     feedback.classList.add('show');
-    feedback.innerHTML = 'Wrong!';
+    feedback.innerText = 'Wrong!';
     time -= 10;
   }
-  listOptions.forEach((listOption) => {
-    listOption.removeEventListener('click', processAnswer);
+  answerButtons.forEach((answerButton) => {
+    answerButton.removeEventListener('click', processAnswer);
+    setTimeout(() => {
+      questionTitle.classList.remove('show');
+    }, 850);
   });
   setTimeout(() => {
     feedback.classList.remove('show');
@@ -98,6 +114,9 @@ function processAnswer(e) {
       setTimeout(() => {
         endQuiz();
       }, 500);
+      if (time > 0 && soundToggle.checked) {
+        quizOver.play();
+      }
     } else {
       questionIndex++;
       questionShow();
@@ -105,23 +124,62 @@ function processAnswer(e) {
   }, 1000);
 }
 
-// init
-function startQuiz() {
-  // remove startScreen add questions
-  startScreen.classList.add('hide');
-  questionsDiv.classList.remove('hide');
-  questionShow();
-  time = 100;
-  // startTimer();
+// timer
+function startTimer() {
+  countdownTimer = setInterval(() => {
+    time--;
+    timeSpan.innerText = time;
+    timer.classList.add('show');
+    if (time <= 0) {
+      endQuiz();
+      if (soundToggle.checked) {
+        quizOverTimer.play();
+      }
+      setTimeout(() => {
+        let title = document.querySelector('#end-screen p');
+        let subtitle = document.createElement('span');
+        subtitle.setAttribute('class', 'subtitle');
+        subtitle.textContent = `Time is up! `;
+        endScreen.insertBefore(subtitle, title);
+      }, 250);
+    }
+  }, 1000);
 }
 
+// start quiz init
+startBtn.addEventListener('click', startQuiz);
+
+// start quiz
+function startQuiz() {
+  // set timeout to initiate timer at the same time
+  setTimeout(() => {
+    // remove startScreen add questions
+    startScreen.classList.add('hide');
+    questionsDiv.classList.remove('hide');
+    questionShow();
+    time = 100;
+  }, 1000);
+  startTimer();
+}
+
+// end quiz
 function endQuiz() {
-  // end of the quiz
   clearInterval(countdownTimer);
   timer.classList.remove('show');
-  timeSpan.innerHTML = 0;
+  timeSpan.innerText = 0;
   questionsDiv.classList.add('hide');
   endScreen.classList.remove('hide');
+  setTimeout(() => {
+    inputGroup.forEach((el) => el.classList.add('show'));
+  }, 200);
   finalScore.textContent = score;
   scores(score);
 }
+
+soundToggle.addEventListener('change', () => {
+  if (soundToggle.classList.contains('on')) {
+    soundToggle.classList.replace('on', 'off');
+  } else {
+    soundToggle.classList.replace('off', 'on');
+  }
+});
