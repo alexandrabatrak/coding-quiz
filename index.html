@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Coding Quiz</title>
+    <link rel="stylesheet" href="./assets/css/loader.css" />
     <link rel="preconnect" href="https://fonts.bunny.net" />
     <link
       href="https://fonts.bunny.net/css?baskervville:400,400i"
@@ -13,34 +14,43 @@
   </head>
 
   <body>
+    <div id="loader"><span>*</span></div>
+    <input
+      type="checkbox"
+      class="speaker on"
+      id="speaker"
+      name="speaker"
+      checked />
     <main>
       <div class="scores"><a href="highscores.html">View Highscores</a></div>
       <div class="timer">Time: <span id="time">0</span></div>
       <div class="container">
         <div class="wrapper">
           <div id="start-screen" class="start">
-            <h1>Coding quiz</h1>
-            <p class="subtitle">
+            <h1 class="reveal">Coding quiz</h1>
+            <p class="subtitle reveal">
               Test your knowledge of JavaScipt fundamentals.
             </p>
-            <p>
+            <p class="reveal">
               Try to answer the following code-related questions within the time
               limit. Keep in mind that incorrect answers will penalize your
               score/time by ten seconds!
             </p>
-            <button id="start">Start quiz</button>
+            <button id="start" class="reveal">Start quiz</button>
           </div>
 
           <div id="questions" class="hide">
-            <h2 id="question-title"></h2>
+            <h2 id="question-title" class="reveal"></h2>
             <div id="choices" class="choices"></div>
             <!-- <button id="next">Next</button> -->
           </div>
 
           <div id="end-screen" class="hide">
-            <h2>Thank you for taking this quiz!</h2>
-            <p>Your final score is <span id="final-score"></span>.</p>
-            <p class="input-group">
+            <h2 class="reveal">Thank you for taking this quiz!</h2>
+            <p class="reveal">
+              Your final score is <span id="final-score"></span>.
+            </p>
+            <p class="input-group reveal">
               <label for="initials">Enter initials:</label>
               <input type="text" id="initials" max="3" />
               <button id="submit">Submit</button>
