@@ -23,12 +23,12 @@ export function scores(score) {
       // endScreen
       let buttonContainer = document.createElement('div');
       buttonContainer.classList.add('button-container', 'reveal');
-      let startAgainBtn = document.createElement('button');
-      startAgainBtn.setAttribute('id', 'start-again-button');
-      startAgainBtn.innerHTML = `<a href="index.html">Start again</a>`;
-      let highScoresBtn = document.createElement('button');
-      highScoresBtn.setAttribute('id', 'highscores-button');
-      highScoresBtn.innerHTML = `<a href="highscores.html">Highscores</a>`;
+      let startAgainBtn = document.createElement('a');
+      startAgainBtn.setAttribute('href', 'index.html');
+      startAgainBtn.innerHTML = `<button>Start again</button>`;
+      let highScoresBtn = document.createElement('a');
+      highScoresBtn.setAttribute('href', 'highscores.html');
+      highScoresBtn.innerHTML = `<button>Highscores</button>`;
 
       // replace p with buttons
       let endP = endScreen.querySelectorAll('p');
@@ -106,7 +106,7 @@ function getHighScores() {
   setTimeout(() => {
     const elements = document.querySelectorAll('.reveal');
     elements.forEach((element) => element.classList.add('show'));
-  }, 100);
+  }, 0);
 }
 
 getHighScores();
