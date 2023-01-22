@@ -15,8 +15,6 @@ window.addEventListener('load', () => {
 });
 
 // sounds
-const startSound = new Audio();
-startSound.src = './assets/sfx/start.wav';
 const correctSound = new Audio();
 correctSound.src = './assets/sfx/correct.wav';
 const wrongSound = new Audio();
@@ -44,6 +42,8 @@ const timer = document.querySelector('.timer');
 let time;
 let countdownTimer;
 
+// TODO: I want to have an option for user to select the mode for amount of questions - 10, 15, 20. Based on the amount of question, set timer value to questionAmount * 15.
+
 // question variables
 let score = 0;
 let questionIndex = 0;
@@ -61,9 +61,7 @@ function questionShow() {
   choices.innerHTML = question.answers
     .map(
       (answer, index) =>
-        `<button type="button" value="${answer}" id="answer-${index}" data-index=${
-          index + 1
-        } class="quiz-option reveal">${answer}</button>`
+        `<button type="button" value="${answer}" id="answer-${index}" data-index=${index} class="quiz-option reveal">${answer}</button>`
     )
     .join('');
   // eventHadler for choice buttons
@@ -159,7 +157,7 @@ function startQuiz() {
     questionShow();
     time = 100;
   }, 1000);
-  startTimer();
+  // startTimer();
 }
 
 // end quiz
