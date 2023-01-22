@@ -109,7 +109,7 @@ button:hover {
 }
 
 .choices button:before {
-  content: attr(data-index);
+  content: attr(data-index + 1);
   height: inherit;
   width: 10px;
   position: relative;
