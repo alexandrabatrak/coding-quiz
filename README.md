@@ -4,8 +4,11 @@ Bootcamp week 06: Code quiz :yellow_heart:
 
 ## About
 
-Quiz-game application running in browser. This quiz allows to test one's knowledge of JavaScript fundamentals with a timed multiple choice quiz. Be aware, for every wrong answer the penalty is losing 10 seconds of the remaining time. Upon completion (or time run out) you are able to save your score, so you can challenge yourself next time again, until you get all the answers right!
+_This app runs in the browser, and features dynamically updated HTML and CSS powered by JavaScript._
 
+The quiz allows to test one's knowledge of JavaScript fundamentals with a timed multiple choice quiz. For every wrong answer user is penalised by losing 10 seconds of the remaining time. Upon completion (or time run out) user is able to save their score, so they can challenge themselves over and over, until they get all the answers right.
+
+**As always, built with accessibility in mind**. Tested in Chrome.
 
 ### Features:
 
@@ -13,8 +16,8 @@ Quiz-game application running in browser. This quiz allows to test one's knowled
 - [x] Option for user to select amount of questions (10/15/20)
 - [x] Randomised questions, each with 4 randomised answer options
 - [x] Time penalty on incorrect answer
-- [x] Client-side scores saving and display of the top 10 scores (to save memory, only the last 100 scores are stored)
-- [x] UI and sound effect feedback on correct/incorrect answer choice, variable ending sound based on the reason game ended - either all questions answered, or time run out
+- [x] Client-side scores saving and display of the top 10 scores (to save memory only the last 100 scores are stored)
+- [x] UI and sound effect feedback on correct/incorrect answer choice, variable ending sound based on the reason game ended - either all questions are answered or time runs out
 - [x] Option to switch the sound off (on by default)
 - [x] Clean, polished and responsive mobile-first design
 - [x] It's beautiful :ok_hand:
