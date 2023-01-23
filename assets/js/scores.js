@@ -8,6 +8,7 @@ export function scores(score) {
   const submit = document.getElementById('submit');
 
   submit.addEventListener('click', (e) => {
+    e.preventDefault();
     if (validateInitials(initials)) {
       let highScoresObj = {
         score: score,
@@ -31,8 +32,7 @@ export function scores(score) {
       highScoresBtn.innerHTML = `<button>Highscores</button>`;
 
       // replace p with buttons
-      let endP = endScreen.querySelectorAll('p');
-      endP.forEach((p) => p.classList.add('hide'));
+      endScreen.querySelectorAll('p').forEach((p) => p.classList.add('hide'));
       buttonContainer.appendChild(startAgainBtn);
       buttonContainer.appendChild(highScoresBtn);
       endScreen.appendChild(buttonContainer);
