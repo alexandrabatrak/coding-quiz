@@ -1,5 +1,5 @@
 #loader {
-  position: absolute;
+  position: fixed;
   left: 0;
   top: 0;
   width: 100vw;
@@ -12,10 +12,12 @@
   font-size: 3rem;
   opacity: 1;
   transition: all 0.5s linear;
+  overflow: hidden;
   z-index: 1000;
 }
 
 #loader.remove {
   opacity: 0;
+  overflow: auto;
   z-index: -1000;
 }
