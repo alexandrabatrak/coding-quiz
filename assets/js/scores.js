@@ -46,8 +46,6 @@ export function scores(score) {
 }
 
 // validate initials input
-//https://stackoverflow.com/questions/53036790/regex-to-search-a-string-to-have-not-more-than-2-letters
-// https://stackoverflow.com/questions/6603015/check-whether-a-string-matches-a-regex-in-js
 function validateInitials(initials) {
   const regEx = /^[a-zA-Z]{2}$/;
   if (regEx.test(initials.value)) {
