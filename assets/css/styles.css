@@ -58,6 +58,10 @@ a:hover {
   color: var(--primary);
 }
 
+a:has(button) {
+  outline: none;
+}
+
 button {
   display: inline-block;
   cursor: pointer;
@@ -235,6 +239,12 @@ main {
   background: rgba(255, 255, 255, 0.25);
   backdrop-filter: blur(15px);
   border: 1px solid var(--black);
+}
+
+.difficulty-description {
+  margin: 2rem 0;
+  padding: 0.5rem 0 0;
+  border-top: 1px solid var(--primary);
 }
 
 #questions {
