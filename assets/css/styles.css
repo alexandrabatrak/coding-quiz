@@ -242,7 +242,7 @@ main {
 }
 
 .difficulty-description {
-  margin: 2rem 0;
+  margin: 2rem 0 0;
   padding: 0.5rem 0 0;
   border-top: 1px solid var(--primary);
 }
@@ -428,7 +428,7 @@ main {
   .wrapper {
     width: 90%;
     margin: 0 1rem;
-    padding: 4rem;
+    padding: 4rem 4rem 1.5rem;
   }
 
   .scores {
