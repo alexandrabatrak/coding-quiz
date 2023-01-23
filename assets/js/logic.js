@@ -49,13 +49,9 @@ function questionsAmount() {
   difficultyChoice.forEach((option) => {
     option.addEventListener('change', () => {
       questionAmount = option.value;
-      time = questionAmount * 12;
-
-      return time;
     });
     return questionAmount;
   });
-
   questionsList = questionsList.slice(0, questionAmount);
   return questionsList;
 }
@@ -173,6 +169,7 @@ function startQuiz() {
     questionsDiv.classList.remove('hide');
     questionShow();
   }, 1000);
+  time = questionAmount * 15;
   startTimer();
 }
 
@@ -189,11 +186,3 @@ function endQuiz() {
   finalScore.textContent = score;
   scores(score);
 }
-
-soundToggle.addEventListener('change', () => {
-  if (soundToggle.classList.contains('on')) {
-    soundToggle.classList.replace('on', 'off');
-  } else {
-    soundToggle.classList.replace('off', 'on');
-  }
-});
