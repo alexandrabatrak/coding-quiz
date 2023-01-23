@@ -71,13 +71,60 @@ button {
   transition: all 0.1s;
 }
 
-#start {
+button#start {
   font-size: 1.2rem;
   background-color: white;
   border: 1px solid var(--black);
+  margin-top: 2rem;
   padding: 1rem 2rem;
   text-transform: uppercase;
   letter-spacing: 3px;
+}
+
+.start-options-wrapper {
+  display: flex;
+  /* justify-content: space-between; */
+}
+
+.inline-input-group:not(:last-child) {
+  margin-right: 2rem;
+}
+.inline-input-group label {
+  vertical-align: top;
+  font-style: italic;
+  text-transform: lowercase;
+}
+
+input[type='radio'] {
+  position: relative;
+  appearance: none;
+  background-color: transparent;
+  font: inherit;
+  margin: 3px 0 0;
+  color: var(--primary);
+  width: 1rem;
+  height: 1rem;
+  border: 0.05rem solid var(--primary);
+}
+
+input[type='radio']::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0.75em;
+  height: 0.75em;
+  transform: scale(0);
+  transition: 0.1s transform ease-in-out;
+  box-shadow: inset 1rem 1rem var(--primary);
+}
+
+input[type='radio']:checked::before {
+  transform: scale(1);
+}
+
+input[type='radio']:checked + label {
+  font-weight: bold;
 }
 
 button:hover {
@@ -90,12 +137,12 @@ button:hover {
 }
 
 .choices button {
-  display: block;
-  width: 100%;
-  position: relative;
   display: flex;
   align-items: center;
+  width: 100%;
+  position: relative;
   font-size: 1.2rem;
+  text-align: left;
 }
 
 .choices .correct {
@@ -109,7 +156,7 @@ button:hover {
 }
 
 .choices button:before {
-  content: attr(data-index + 1);
+  content: attr(data-index);
   height: inherit;
   width: 10px;
   position: relative;
@@ -178,7 +225,7 @@ main {
   align-items: center;
   height: 100%;
   max-width: 768px;
-  margin: 1rem auto 0;
+  margin: 3rem auto 0;
 }
 
 .wrapper {
@@ -219,16 +266,20 @@ main {
 }
 
 .timer {
+  position: fixed;
   right: 0;
   width: fit-content;
   margin: 0.5rem 0 0 auto;
   padding: 1rem;
   background: white;
+  border: 1px solid;
+  border-right-color: transparent;
   font-size: 1.5em;
   font-style: italic;
   text-transform: lowercase;
   opacity: 0;
   transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+  z-index: 2;
 }
 
 .timer.show {
