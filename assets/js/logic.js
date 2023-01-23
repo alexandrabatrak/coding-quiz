@@ -26,6 +26,7 @@ quizOverTimer.src = './assets/sfx/quiz-over-timer.mp3';
 
 // get elements
 const startScreen = document.getElementById('start-screen');
+const difficultyChoice = document.querySelectorAll('.inline-input-group input');
 const startBtn = document.getElementById('start');
 const questionsDiv = document.getElementById('questions');
 const questionTitle = document.getElementById('question-title');
@@ -42,14 +43,28 @@ const timer = document.querySelector('.timer');
 let time;
 let countdownTimer;
 
-// TODO: I want to have an option for user to select the mode for amount of questions - 10, 15, 20. Based on the amount of question, set timer value to questionAmount * 15.
+let questionAmount = '10';
+function questionsAmount() {
+  let questionsList = questions();
+  difficultyChoice.forEach((option) => {
+    option.addEventListener('change', () => {
+      questionAmount = option.value;
+      time = questionAmount * 12;
+
+      return time;
+    });
+    return questionAmount;
+  });
+
+  questionsList = questionsList.slice(0, questionAmount);
+  return questionsList;
+}
 
 // question variables
 let score = 0;
 let questionIndex = 0;
-let questionsList = questions();
+let questionsList = questionsAmount();
 let answerButtons;
-
 // display question with options (from shuffled array of object)
 function questionShow() {
   questionTitle.classList.remove('show');
@@ -61,7 +76,9 @@ function questionShow() {
   choices.innerHTML = question.answers
     .map(
       (answer, index) =>
-        `<button type="button" value="${answer}" id="answer-${index}" data-index=${index} class="quiz-option reveal">${answer}</button>`
+        `<button type="button" value="${answer}" id="answer-${index}" data-index=${
+          index + 1
+        } class="quiz-option reveal">${answer}</button>`
     )
     .join('');
   // eventHadler for choice buttons
@@ -155,9 +172,8 @@ function startQuiz() {
     startScreen.classList.add('hide');
     questionsDiv.classList.remove('hide');
     questionShow();
-    time = 100;
   }, 1000);
-  // startTimer();
+  startTimer();
 }
 
 // end quiz
