@@ -43,7 +43,7 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100%;
+  min-height: calc(100% - 3rem);
   max-width: 768px;
   margin: 3rem auto 0;
 }
@@ -328,9 +328,6 @@ code {
   height: inherit;
   width: 10px;
   position: relative;
-  top: 0;
-  left: -0.25rem;
-  font-size: 2rem;
   padding: 0 0.5rem 0 0;
   color: rgba(255, 255, 255, 0.5);
 }
@@ -360,7 +357,7 @@ code {
 }
 
 .button-container a {
-  margin: 1rem 1rem 1rem 0;
+  margin: 1rem 1rem 0 0;
 }
 
 /* HIGHSCORES */
@@ -503,6 +500,7 @@ footer p {
     position: absolute;
     top: 0;
     left: -1.5rem;
+    font-size: 2rem;
   }
 
   #end-screen span.subtitle,
