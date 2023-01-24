@@ -302,6 +302,10 @@ input[type='text'] {
   line-height: 1.2;
 }
 
+code {
+  pointer-events: none;
+}
+
 .choices button {
   width: 100%;
   position: relative;

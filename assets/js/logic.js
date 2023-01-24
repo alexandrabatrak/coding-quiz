@@ -96,6 +96,7 @@ function questionShow() {
 
 // choice button callback function
 function processAnswer(e) {
+  e.stopPropagation();
   let selectedAnswer = e.target.value;
   let answerButton = e.target;
   let question = questionsList[questionIndex];
@@ -194,6 +195,7 @@ function endQuiz() {
 }
 
 // difficulty description appearance
+// TODO: Add a caret and display description on a click instead (accordeon)
 const difficultyRef = document.getElementById('description-toggle');
 const difficultyDesc = document.getElementById('difficulty-description');
 const wrapper = document.getElementsByClassName('wrapper');
