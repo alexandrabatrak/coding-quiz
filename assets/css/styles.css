@@ -144,8 +144,6 @@ button:hover {
 }
 
 .choices button {
-  display: flex;
-  align-items: center;
   width: 100%;
   position: relative;
   font-size: 1.2rem;
@@ -271,12 +269,22 @@ main {
   min-height: 300px;
 }
 
-#question-title:not(:has(pre)) code {
-  font-size: 1.2rem;
+#question-title:not(:has(pre)) code,
+button code {
   background: #b3b6c5;
-  padding: 0.5rem;
   border-radius: 0.5rem;
   vertical-align: middle;
+}
+
+#question-title:not(:has(pre)) code {
+  font-size: 1.2rem;
+  padding: 0.5rem;
+}
+
+button code {
+  font-size: 1.15rem;
+  padding: 0.25rem;
+  vertical-align: text-top;
 }
 
 #question-title pre {
