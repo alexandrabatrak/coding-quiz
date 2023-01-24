@@ -259,6 +259,7 @@ input[type='text'] {
   margin-bottom: 0.5rem;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .difficulty-description {
@@ -447,7 +448,7 @@ footer p {
   border: 0.333em solid transparent;
   border-right-color: currentColor;
   position: absolute;
-  top: 1.1rem;
+  top: 1.05rem;
   left: 3rem;
   appearance: none;
 }
