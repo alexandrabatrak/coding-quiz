@@ -37,6 +37,7 @@ export function scores(score) {
 
       // replace p with buttons
       endScreen.querySelectorAll('p').forEach((p) => p.classList.add('hide'));
+      endScreen.querySelector('span').classList.add('hide');
       buttonContainer.appendChild(startAgainBtn);
       buttonContainer.appendChild(highScoresBtn);
       endScreen.appendChild(buttonContainer);
