@@ -30,10 +30,10 @@ export function scores(score) {
       buttonContainer.classList.add('button-container', 'reveal');
       let startAgainBtn = document.createElement('a');
       startAgainBtn.setAttribute('href', 'index.html');
-      startAgainBtn.innerHTML = `<button>Start again</button>`;
+      startAgainBtn.innerText = 'Start again';
       let highScoresBtn = document.createElement('a');
       highScoresBtn.setAttribute('href', 'highscores.html');
-      highScoresBtn.innerHTML = `<button>Highscores</button>`;
+      highScoresBtn.innerText = 'Highscores';
 
       // replace p with buttons
       endScreen.querySelectorAll('p').forEach((p) => p.classList.add('hide'));

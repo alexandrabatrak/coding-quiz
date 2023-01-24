@@ -81,11 +81,8 @@ a:hover {
   color: var(--primary);
 }
 
-a:has(button) {
-  outline: none;
-}
-
-button {
+button,
+.button-container a {
   display: inline-block;
   cursor: pointer;
   font-size: 1.25rem;
@@ -98,7 +95,8 @@ button {
   transition: all 0.1s;
 }
 
-button:hover {
+button:hover,
+.button-container a:hover {
   background-color: var(--secondary);
 }
 
@@ -356,7 +354,7 @@ input[type='text'] {
   font-weight: bold;
 }
 
-.button-container > * {
+.button-container a {
   margin: 1rem 1rem 1rem 0;
 }
 
