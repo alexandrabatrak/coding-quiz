@@ -8,7 +8,7 @@ _This app runs in the browser, and features dynamically updated HTML and CSS pow
 
 The quiz allows to test one's knowledge of JavaScript fundamentals with a timed multiple choice quiz. For every wrong answer user is penalised by losing 10 seconds of the remaining time. Upon completion (or time run out) user is able to save their score, so they can challenge themselves over and over, until they get all the answers right.
 
-**As always, built with accessibility in mind**. Tested in Chrome.
+**As always, built with accessibility in mind**. Tested in Chrome, Firefox and Opera.
 
 ### Features:
 
