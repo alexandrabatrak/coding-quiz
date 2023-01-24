@@ -4,8 +4,10 @@
   --primary: #4a576b;
   --secondary: #8c97a9;
   --light: #afb7b9;
+  --code: #b3b6c5;
 }
 
+/* GENERAL */
 body {
   font-family: 'Baskervville', serif;
   font-size: 1.2rem;
@@ -14,8 +16,7 @@ body {
   color: var(--black);
 }
 
-body:before {
-  content: '*';
+.home-link {
   width: 1rem;
   height: 1rem;
   color: var(--light);
@@ -26,12 +27,34 @@ body:before {
   font-size: 2rem;
 }
 
-body:after {
-  content: 'Alexandra Batrak © 2023';
+main {
+  min-height: calc(100vh - 5.25rem);
+  min-height: calc(100dvh - 5.25rem);
+  height: 100%;
+  margin: 3rem 0.5rem 0.5rem;
+  background-image: url(../images/bg.jpg);
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+  overflow-x: hidden;
+}
+
+.container {
   display: flex;
-  color: var(--light);
-  margin: 0.5rem;
-  font-size: 1rem;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  max-width: 768px;
+  margin: 3rem auto 0;
+}
+
+.wrapper {
+  width: 100%;
+  margin: 0 0.5rem 1rem;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(15px);
+  box-shadow: 1px 1px 1px rgb(255 255, 255, 0.7);
 }
 
 h1 {
@@ -75,24 +98,81 @@ button {
   transition: all 0.1s;
 }
 
-button#start {
-  font-size: 1.2rem;
-  background-color: white;
-  border: 1px solid var(--black);
-  margin-top: 2rem;
-  padding: 1rem 2rem;
-  text-transform: uppercase;
-  letter-spacing: 3px;
+button:hover {
+  background-color: var(--secondary);
 }
 
+/* list styles */
+ol {
+  padding-left: 0px;
+  max-height: 400px;
+  overflow: auto;
+}
+
+li {
+  padding: 5px;
+  list-style: decimal inside none;
+}
+
+li:nth-child(odd) {
+  background-color: var(--light);
+}
+
+.scores {
+  padding: 0.25rem 0;
+  border-bottom: 1px solid;
+  width: fit-content;
+  padding-top: 1rem;
+  position: absolute;
+  top: -0.25rem;
+  right: 1.75rem;
+}
+
+.timer {
+  position: fixed;
+  right: 0;
+  width: fit-content;
+  margin: 0.5rem 0 0 auto;
+  padding: 1rem;
+  background: white;
+  border: 1px solid;
+  border-right-color: transparent;
+  font-size: 1.5em;
+  font-style: italic;
+  text-transform: lowercase;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+  z-index: 2;
+}
+
+.timer.show {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* UTILITY */
+.hide {
+  display: none;
+}
+
+.reveal {
+  opacity: 0;
+  transition: opacity 0.5s linear;
+}
+
+.reveal.show {
+  opacity: 1;
+}
+
+/* START */
 .start-options-wrapper {
   display: flex;
-  /* justify-content: space-between; */
 }
 
 .inline-input-group:not(:last-child) {
   margin-right: 2rem;
 }
+
 .inline-input-group label {
   line-height: 1;
   vertical-align: top;
@@ -134,13 +214,93 @@ input[type='radio']:checked + label {
   font-weight: bold;
 }
 
-button:hover {
-  background-color: var(--secondary);
+#start {
+  font-size: 1.2rem;
+  background-color: white;
+  border: 1px solid var(--black);
+  margin-top: 2rem;
+  padding: 1rem 2rem;
+  text-transform: uppercase;
+  letter-spacing: 3px;
 }
 
 #start:hover {
   color: var(--light);
   background-color: var(--black);
+}
+
+.input-group {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  border: 1px solid var(--black);
+}
+
+.input-group > * {
+  margin: 0.5rem;
+}
+
+input[type='text'] {
+  font-size: 1rem;
+  padding: 0.5rem 0;
+  flex-grow: 1;
+}
+
+.input-group button {
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+#description-toggle {
+  margin-bottom: 0;
+}
+
+.difficulty-description {
+  margin: 0 0 1rem 0;
+  padding: 0.5rem 0 0;
+  border-top: 1px solid var(--primary);
+  opacity: 0;
+  max-height: 0;
+  transform: translateY(-0.5rem);
+  transition: opacity 0.3s ease-in-out, max-height 0.4s ease-in-out,
+    transform 0.3s ease-in-out;
+  background: inherit;
+}
+
+.difficulty-description.show {
+  max-height: fit-content;
+  opacity: 1;
+  transform: translate(0);
+}
+
+/* QUESTIONS */
+#questions {
+  min-height: 300px;
+}
+
+#question-title:not(:has(pre)) code,
+.choices button code {
+  background: var(--code);
+  border-radius: 0.5rem;
+  vertical-align: middle;
+}
+
+#question-title:not(:has(pre)) code {
+  font-size: 1.2rem;
+  padding: 0.5rem;
+}
+
+#question-title pre {
+  width: fit-content;
+  margin-bottom: -1rem;
+  padding: 0 0.5rem 0 0;
+  background: var(--code);
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  line-height: 1.2;
 }
 
 .choices button {
@@ -172,176 +332,11 @@ button:hover {
   color: rgba(255, 255, 255, 0.5);
 }
 
-.input-group {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  padding: 1rem;
-  border: 1px solid var(--black);
-}
-
-.input-group > * {
-  margin: 0.5rem;
-}
-
-input[type='text'] {
-  font-size: 1rem;
-  padding: 0.5rem 0;
-  flex-grow: 1;
-}
-
-.input-group button {
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
-ol {
-  padding-left: 0px;
-  max-height: 400px;
-  overflow: auto;
-}
-
-li {
-  padding: 5px;
-  list-style: decimal inside none;
-}
-
-li:nth-child(odd) {
-  background-color: var(--light);
-}
-
-main {
-  min-height: calc(100vh - 5.25rem);
-  min-height: calc(100dvh - 5.25rem);
-  height: 100%;
-  margin: 3rem 0.5rem 0.5rem;
-  background-image: url(../images/bg.jpg);
-  background-position: center;
-  background-size: cover;
-  background-attachment: fixed;
-  overflow-x: hidden;
-}
-
-/* container has too much margin and it's stupid when questions and answers are too long */
-.container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-  max-width: 768px;
-  margin: 3rem auto 0;
-}
-
-.wrapper {
-  width: 100%;
-  margin: 0 0.5rem 1rem;
-  padding: 2rem;
-  background: rgba(255, 255, 255, 0.35);
-  backdrop-filter: blur(15px);
-  box-shadow: 1px 1px 1px rgb(255 255, 255, 0.7);
-}
-
-#description-toggle {
-  margin-bottom: 0;
-}
-
-.difficulty-description {
-  margin: 0 0 1rem 0;
-  padding: 0.5rem 0 0;
-  border-top: 1px solid var(--primary);
-  opacity: 0;
-  max-height: 0;
-  transform: translateY(-0.5rem);
-  transition: opacity 0.3s ease-in-out, max-height 0.4s ease-in-out,
-    transform 0.3s ease-in-out;
-  background: inherit;
-}
-
-.difficulty-description.show {
-  max-height: fit-content;
-  opacity: 1;
-  transform: translate(0);
-}
-
-#questions {
-  min-height: 300px;
-}
-
-#question-title:not(:has(pre)) code,
-button code {
-  background: #b3b6c5;
-  border-radius: 0.5rem;
-  vertical-align: middle;
-}
-
-#question-title:not(:has(pre)) code {
-  font-size: 1.2rem;
-  padding: 0.5rem;
-}
-
-button code {
+.choices code {
   font-size: 1.15rem;
   line-height: 1.5;
   padding: 0.25rem 0.5rem;
   vertical-align: text-top;
-}
-
-#question-title pre {
-  width: fit-content;
-  margin-bottom: -1rem;
-  padding: 0 0.5rem 0 0;
-  background: #b3b6c5;
-  border-radius: 0.5rem;
-  font-size: 1rem;
-  line-height: 1.2;
-}
-
-.subtitle,
-#final-score {
-  font-weight: bold;
-}
-
-#end-screen span.subtitle,
-#end-screen p:first-of-type {
-  display: inline;
-}
-
-.button-container > * {
-  margin: 1rem 1rem 1rem 0;
-}
-
-.scores {
-  padding: 0.25rem 0;
-  border-bottom: 1px solid;
-  width: fit-content;
-  padding-top: 1rem;
-  position: absolute;
-  top: -0.25rem;
-  right: 1.75rem;
-}
-
-.timer {
-  position: fixed;
-  right: 0;
-  width: fit-content;
-  margin: 0.5rem 0 0 auto;
-  padding: 1rem;
-  background: white;
-  border: 1px solid;
-  border-right-color: transparent;
-  font-size: 1.5em;
-  font-style: italic;
-  text-transform: lowercase;
-  opacity: 0;
-  transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
-  z-index: 2;
-}
-
-.timer.show {
-  opacity: 1;
-  transform: translateX(0);
 }
 
 .feedback {
@@ -355,10 +350,17 @@ button code {
   opacity: 1;
 }
 
-.hide {
-  display: none;
+/* END SCREEN */
+.subtitle,
+#final-score {
+  font-weight: bold;
 }
 
+.button-container > * {
+  margin: 1rem 1rem 1rem 0;
+}
+
+/* HIGHSCORES */
 #highscores,
 #highscores table {
   width: 100%;
@@ -389,8 +391,16 @@ button code {
   font-size: 1.2rem;
 }
 
-/* speaker icon */
-/* https://codepen.io/atesgoral/details/RLPGaZ */
+/* FOOTER */
+footer p {
+  display: flex;
+  color: var(--light);
+  margin: 0.5rem;
+  font-size: 1rem;
+}
+
+/* EXTRAS */
+/* speaker icon by https://codepen.io/atesgoral/details/RLPGaZ */
 .speaker {
   background: currentColor;
   background-clip: content-box;
@@ -441,24 +451,9 @@ button code {
   left: 0.2em;
 }
 
-.reveal {
-  opacity: 0;
-  transition: opacity 0.5s linear;
-}
-
-.reveal.show {
-  opacity: 1;
-}
-
+/* MEDIA */
 @media (min-width: 992px) {
-  body:after {
-    transform: rotate(-90deg);
-    position: absolute;
-    left: -3rem;
-    top: 50%;
-  }
-
-  body:before {
+  .home-link {
     position: absolute;
     top: 1.5rem;
     left: 2rem;
@@ -478,6 +473,14 @@ button code {
     padding: 2rem 4rem 1.5rem;
   }
 
+  h1 {
+    font-size: 4rem;
+  }
+
+  h2 {
+    font-size: 2.5rem;
+  }
+
   .scores {
     left: 1rem;
   }
@@ -487,14 +490,6 @@ button code {
     top: 0.5rem;
     font-size: 2.5em;
     transform: translateX(2rem);
-  }
-
-  h1 {
-    font-size: 4rem;
-  }
-
-  h2 {
-    font-size: 2.5rem;
   }
 
   .choices button {
@@ -507,6 +502,11 @@ button code {
     left: -1.5rem;
   }
 
+  #end-screen span.subtitle,
+  #end-screen p:first-of-type {
+    display: inline;
+  }
+
   #highscores tbody tr td:first-child {
     width: 15%;
   }
@@ -515,5 +515,12 @@ button code {
     top: auto;
     left: 1.5rem;
     bottom: 2rem;
+  }
+
+  footer p {
+    transform: rotate(-90deg);
+    position: absolute;
+    left: -3rem;
+    top: 50%;
   }
 }
