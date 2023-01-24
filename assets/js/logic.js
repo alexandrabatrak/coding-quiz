@@ -206,3 +206,12 @@ wrapper[0].addEventListener('mouseleave', (e) => {
     difficultyDesc.classList.remove('show');
   }
 });
+
+// sound toggle
+soundToggle.addEventListener('change', () => {
+  if (soundToggle.classList.contains('on')) {
+    soundToggle.classList.replace('on', 'off');
+  } else {
+    soundToggle.classList.replace('off', 'on');
+  }
+});
