@@ -1,135 +1,4 @@
 export function questions() {
-  // quiz
-  // let questionsList = [
-  //   {
-  //     title:
-  //       'What is the output of the following code? var x = 10; var y = 20; console.log(x + y);',
-  //     answers: ['10', '20', '30', 'undefined'],
-  //     correct: 2,
-  //   },
-  //   {
-  //     title: 'What is the difference between let and var in JavaScript?',
-  //     answers: [
-  //       'let is block-scoped and var is function-scoped',
-  //       'let is function-scoped and var is block-scoped',
-  //       'let and var are the same',
-  //       'let is not used in JavaScript',
-  //     ],
-  //     correct: 0,
-  //   },
-  //   {
-  //     title:
-  //       'What is the output of the following code? console.log(typeof(null))',
-  //     answers: ['null', '"null"', '"object"', 'undefined'],
-  //     correct: 2,
-  //   },
-  //   {
-  //     title:
-  //       'What is the output of the following code? var x = "5"; var y = 5; console.log(x == y);',
-  //     answers: ['true', 'false', 'undefined', 'null'],
-  //     correct: 0,
-  //   },
-  //   {
-  //     title: 'What is closure in JavaScript?',
-  //     answers: [
-  //       'A function that can access variables in its parent scope even after the parent function has returned',
-  //       'A function that can only be invoked once',
-  //       'A function that returns another function',
-  //       'A function that can only be invoked with a certain number of arguments',
-  //     ],
-  //     correct: 0,
-  //   },
-  //   {
-  //     title:
-  //       'What is the output of the following code? console.log(typeof(NaN))',
-  //     answers: ['NaN', '"NaN"', '"number"', 'undefined'],
-  //     correct: 2,
-  //   },
-  //   {
-  //     title:
-  //       'What is the output of the following code? console.log(0.1 + 0.2 == 0.3)',
-  //     answers: ['true', 'false', 'undefined', 'null'],
-  //     correct: 1,
-  //   },
-  //   {
-  //     title:
-  //       'Which of the following is not a valid way to create an array in JavaScript?',
-  //     answers: [
-  //       'var arr = new Array();',
-  //       'var arr = [];',
-  //       'var arr = Array();',
-  //       'var arr = list();',
-  //     ],
-  //     correct: 3,
-  //   },
-  //   {
-  //     title:
-  //       'What is the output of the following code? var x = "5"; var y = 5; console.log(x === y);',
-  //     answers: ['true', 'false', 'undefined', 'null'],
-  //     correct: 1,
-  //   },
-  //   {
-  //     title: 'What is the difference between == and === in JavaScript?',
-  //     answers: [
-  //       '== compares values, === compares values and types',
-  //       '== compares types, === compares values',
-  //       '== and === are the same',
-  //       '== compares only numbers, === compares only strings',
-  //     ],
-  //     correct: 0,
-  //   },
-  //   {
-  //     title:
-  //       'What is the output of the following code? console.log(parseInt("3.14"))',
-  //     answers: ['3', '3.14', 'undefined', 'NaN'],
-  //     correct: 0,
-  //   },
-  //   {
-  //     title:
-  //       'What is the output of the following code? console.log(parseFloat("3.14"))',
-  //     answers: ['3', '3.14', 'undefined', 'NaN'],
-  //     correct: 1,
-  //   },
-  //   {
-  //     title:
-  //       'What is the output of the following code? console.log(true + true)',
-  //     answers: ['2', 'true', 'false', 'undefined'],
-  //     correct: 0,
-  //   },
-  //   {
-  //     title:
-  //       'What is the output of the following code? console.log(true + false)',
-  //     answers: ['1', 'true', 'false', 'undefined'],
-  //     correct: 0,
-  //   },
-  //   {
-  //     title: 'What is the output of the following code? console.log(!false)',
-  //     answers: ['false', 'true', 'undefined', 'null'],
-  //     correct: 1,
-  //   },
-  //   {
-  //     title: 'What is the output of the following code? console.log(!!false)',
-  //     answers: ['false', 'true', 'undefined', 'null'],
-  //     correct: 0,
-  //   },
-  //   {
-  //     title: 'What is hoisting in JavaScript?',
-  //     answers: [
-  //       'The process of moving variable and function declarations to the top of the scope',
-  //       'The process of moving variable and function expressions to the top of the scope',
-  //       'The process of moving all code to the top of the scope',
-  //       'The process of moving all comments to the top of the scope',
-  //     ],
-  //     correct: 0,
-  //   },
-  //   {
-  //     title:
-  //       'What is the output of the following code? console.log(null == undefined)',
-  //     answers: ['true', 'false', 'undefined', 'null'],
-  //     correct: 0,
-  //   },
-  // ];
-
   let questionsList = [
     {
       title: 'What is a higher-order function?',
@@ -181,39 +50,28 @@ export function questions() {
       correct: 2,
     },
     {
-      title: 'What is the difference between == and ===?',
+      title:
+        'What is the difference between <code>==</code> and <code>===</code>?',
       answers: [
-        '== compares values while === compares values and types',
-        '== is used for numbers while === is used for strings',
-        '== compares values while === compares values and memory locations',
-        '=== is faster than ==',
-        '== is used for arrays while === is used for objects',
-        '=== is more strict than ==',
-      ],
-      correct: 0,
-    },
-    {
-      title: 'What is the difference between a for-of loop and a forEach loop?',
-      answers: [
-        'for-of loops are used for arrays while forEach loops are used for objects',
-        'forEach loops are used for arrays while for-of loops are used for objects',
-        'for-of loops return the index while forEach loops return the value',
-        'forEach loops return the index while for-of loops return the value',
-        'for-of loops are used for synchronous operations while forEach loops are used for asynchronous operations',
-        'forEach loops are used for synchronous operations while for-of loops are used for asynchronous operations',
+        '<code>==</code> compares values while <code>===</code> compares values and types',
+        '<code>==</code> is used for numbers while <code>===</code> is used for strings',
+        '<code>==</code> compares values while <code>===</code> compares values and memory locations',
+        '<code>===</code> is faster than <code>==</code>',
+        '<code>==</code> is used for arrays while <code>===</code> is used for objects',
+        '<code>===</code> is more strict than <code>==</code>',
       ],
       correct: 0,
     },
     {
       title:
-        'What is the difference between a try-catch block and a throw statement?',
+        'What is the difference between a <code>for-of</code> loop and a <code>forEach</code> loop?',
       answers: [
-        'try-catch blocks handle errors while throw statements raise errors',
-        'throw statements handle errors while try-catch blocks raise errors',
-        'try-catch blocks can only be used with synchronous code, while throw statements can be used with both synchronous and asynchronous code',
-        'throw statements can only be used with synchronous code, while try-catch blocks can be used with both synchronous and asynchronous code',
-        'try-catch blocks are used to handle specific errors, while throw statements can be used to handle any type of error',
-        'throw statements are used to handle specific errors, while try-catch blocks can be used to handle any type of error',
+        '<code>for-of</code> loops are used for arrays while <code>forEach</code> loops are used for objects',
+        '<code>forEach</code> loops are used for arrays while <code>for-of</code> loops are used for objects',
+        '<code>for-of</code> loops return the index while <code>forEach</code> loops return the value',
+        '<code>forEach</code> loops return the index while <code>for-of</code> loops return the value',
+        '<code>for-of</code> loops are used for synchronous operations while <code>forEach</code> loops are used for asynchronous operations',
+        '<code>forEach</code> loops are used for synchronous operations while <code>for-of</code> loops are used for asynchronous operations',
       ],
       correct: 0,
     },
@@ -282,49 +140,185 @@ export function questions() {
     },
     {
       title:
-        'What will be the output of the following code? function add(a, b) { return a + b; } console.log(add(2, 3))',
+        'What is the difference between <code>let</code> and <code>var</code> in JavaScript?',
+      answers: [
+        '<code>let</code> is block scoped while <code>var</code> is function scoped',
+        '<code>var</code> is block scoped while <code>let</code> is function scoped',
+        '<code>let</code> is hoisted while <code>var</code> is not',
+        '<code>var</code> is hoisted while <code>let</code> is not',
+        '<code>let</code> is newer than <code>var</code>',
+        '<code>var</code> is newer than <code>let</code>',
+      ],
+      correct: 0,
+    },
+    {
+      title: 'What is hoisting in JavaScript?',
+      answers: [
+        'A way to move function and variable declarations to the top of the scope',
+        'A way to move function and variable declarations to the bottom of the scope',
+        'A way to move function and variable declarations to a global scope',
+        'A way to move function and variable declarations to a local scope',
+        'A way to prevent variable and function declarations from being moved',
+        'A way to create variables and functions on the fly',
+      ],
+      correct: 0,
+    },
+    {
+      title:
+        'What is the difference between <code>.map()</code> and <code>.forEach()</code> in JavaScript?',
+      answers: [
+        '<code>.map()</code> returns a new array while <code>.forEach()</code> modifies the original array',
+        '<code>.forEach()</code> returns a new array while <code>.map()</code> modifies the original array',
+        '<code>.map()</code> is used for synchronous operations while <code>.forEach()</code> is used for asynchronous operations',
+        '<code>.forEach()</code> is used for synchronous operations while <code>.map()</code> is used for asynchronous operations',
+        '<code>.map()</code> can only be used on arrays, while <code>.forEach()</code> can be used on any iterable object',
+        '<code>.forEach()</code> can only be used on arrays, while <code>.map()</code> can be used on any iterable object',
+      ],
+      correct: 0,
+    },
+    {
+      title:
+        'What is the difference between <code>.filter()</code> and <code>.find()</code> in JavaScript?',
+      answers: [
+        '<code>.filter()</code> returns an array of all elements that pass the test, while <code>.find()</code> returns the first element that passes the test',
+        '<code>.find()</code> returns an array of all elements that pass the test, while <code>.filter()</code> returns the first element that passes the test',
+        '<code>.filter()</code> can only be used on arrays, while <code>.find()</code> can be used on any iterable object',
+        '<code>.find()</code> can only be used on arrays, while <code>.filter()</code> can be used on any iterable object',
+        '<code>.filter()</code> can only return one element, while <code>.find()</code> can return multiple elements',
+        '<code>.find()</code> can only return one element, while <code>.filter()</code> can return multiple elements',
+      ],
+      correct: 0,
+    },
+    {
+      title:
+        'What is the difference between <code>.every()</code> and <code>.some()</code> in JavaScript?',
+      answers: [
+        '<code>.every()</code> checks if all elements in an array pass a test, while <code>.some()</code> checks if at least one element in an array passes a test',
+        '<code>.some()</code> checks if all elements in an array pass a test, while <code>.every()</code> checks if at least one element in an array passes a test',
+        '<code>.every()</code> can only be used on arrays, while <code>.some()</code> can be used on any iterable object',
+        '<code>.some()</code> can only be used on arrays, while <code>.every()</code> can be used on any iterable object',
+        '<code>.every()</code> returns a boolean, while <code>.some()</code> returns the passing element',
+        '<code>.some()</code> returns a boolean, while <code>.every()</code> returns the passing element',
+      ],
+      correct: 0,
+    },
+    {
+      title:
+        'What is the difference between <code>.sort()</code> and <code>.reverse()</code> in JavaScript?',
+      answers: [
+        '<code>.sort()</code> sorts the elements in an array in ascending order, while <code>.reverse()</code> reverses the order of elements in an array',
+        '<code>.reverse()</code> sorts the elements in an array in ascending order, while <code>.sort()</code> reverses the order of elements in an array',
+        '<code>.sort()</code> modifies the original array, while <code>.reverse()</code> returns a new array',
+        '<code>.reverse()</code> modifies the original array, while <code>.sort()</code> returns a new array',
+        '<code>.sort()</code> can only be used on arrays, while <code>.reverse()</code> can be used on any iterable object',
+        '<code>.reverse()</code> can only be used on arrays, while <code>.sort()</code> can be used on any iterable object',
+      ],
+      correct: 0,
+    },
+    {
+      title:
+        'What is the purpose of the <code>this</code> keyword in JavaScript?',
+      answers: [
+        'It refers to the current object',
+        'It refers to the global object',
+        'It refers to the parent object',
+        'It refers to the object that the function is a property of',
+        'It refers to the object that the function is invoked on',
+        'It refers to the object that the function is a method of',
+      ],
+      correct: 0,
+    },
+    {
+      title:
+        'What is the purpose of the <code>new</code> keyword in JavaScript?',
+      answers: [
+        'It creates a new object',
+        'It creates a new function',
+        'It creates a new array',
+        'It creates a new string',
+        'It creates a new number',
+        'It creates a new boolean',
+      ],
+      correct: 0,
+    },
+    {
+      title:
+        'What is the output of the <code>typeof</code> operator when used with an array in JavaScript?',
+      answers: ['object', 'array', 'function', 'undefined', 'number', 'string'],
+      correct: 0,
+    },
+    {
+      title: `What will be the output of the following code?
+        <pre><code>
+  function add(a, b) { 
+    return a + b; 
+  } 
+  console.log(add(2, 3))
+        </code></pre>`,
       answers: ['5', 'undefined', 'null', 'NaN', '"5"', 'error'],
       correct: 0,
     },
     {
-      title:
-        'What will be the output of the following code? let x = "5"; document.write(++x)',
+      title: `What will be the output of the following code? 
+        <pre><code>
+  let x = "5"; 
+  document.write(++x)
+        </code></pre>`,
       answers: ['5', '6', '"5"', '"6"', 'NaN', 'error'],
       correct: 1,
     },
     {
-      title:
-        'What will be the output of the following code?  let x = "5"; console.log(x + 3)',
+      title: `What will be the output of the following code? 
+        <pre><code>
+  let x = "5"; 
+  console.log(x + 3)
+        </code></pre>`,
       answers: ['8', '53', '5undefined', '53', 'null', 'error'],
       correct: 1,
     },
     {
-      title:
-        'What will be the output of the following code? function check(a, b) { return a === b; } console.log(check(2, "2"))',
+      title: `What will be the output of the following code? 
+        <pre><code>
+  function check(a, b) { 
+    return a === b; 
+  } 
+  console.log(check(2, "2"))
+        </code></pre>`,
       answers: ['true', 'false', 'undefined', 'null', 'NaN', 'error'],
       correct: 1,
     },
     {
-      title:
-        'What will be the output of the following code? let x = [1, 2, 3]; console.log(x.length)',
+      title: `What will be the output of the following code? 
+        <pre><code>
+  let x = [1, 2, 3];
+  console.log(x.length)
+        </code></pre>`,
       answers: ['3', '0', '1', 'undefined', 'null', 'error'],
       correct: 0,
     },
     {
-      title:
-        'What will be the output of the following code? console.log(Math.min(1, 2, 3))',
+      title: `What will be the output of the following code? 
+        <pre><code>
+  console.log(Math.min(1, 2, 3)
+        </code></pre>`,
       answers: ['1', '2', '3', 'undefined', 'null', 'error'],
       correct: 0,
     },
     {
-      title:
-        'What will be the output of the following code?  let x = "5"; console.log(x - 3)',
+      title: `What will be the output of the following code? 
+        <pre><code>
+  let x = "5"; 
+  console.log(x - 3)
+        </code></pre>`,
       answers: ['2', '8', '5', '-2', 'NaN', 'error'],
       correct: 3,
     },
     {
-      title:
-        'What will be the output of the following code? let x = "Kevin"; console.log(Hello, ${x})',
+      title: `What will be the output of the following code? 
+        <pre><code>
+  let x = "Kevin"; 
+  console.log('Hello', x)
+        </code></pre>`,
       answers: [
         'Hello, Kevin',
         'Kevin',
@@ -336,20 +330,31 @@ export function questions() {
       correct: 0,
     },
     {
-      title:
-        'What will be the output of the following code? function add(a, b) { return a + b; } console.log(add("2", "3"))',
+      title: `What will be the output of the following code? 
+        <pre><code>
+  function add(a, b) { 
+    return a + b; 
+  } 
+  console.log(add("2", "3"))
+        </code></pre>`,
       answers: ['5', '23', '"23"', 'undefined', 'null', 'error'],
       correct: 2,
     },
     {
-      title:
-        'What will be the output of the following code? let x = { name: "Koopa", age: 7}; console.log(x.name)',
+      title: `What will be the output of the following code? 
+        <pre><code>
+  let x = { 
+    name: "Koopa", 
+    age: 7
+  }; 
+  console.log(x.name)
+  </code></pre>`,
       answers: ['Koopa', '7', 'undefined', 'null', 'NaN', 'error'],
       correct: 0,
     },
   ];
 
-  // TODO: I want 6 possible answers and randomly display only 4 - randomise 5 answers + 1 correct
+  console.log(questionsList.length);
 
   // Shuffle the array using the Fisher-Yates shuffle algorithm
   for (let i = questionsList.length - 1; i > 0; i--) {
@@ -366,7 +371,5 @@ export function questions() {
     question.answers.splice(Math.floor(Math.random() * 4), 0, correctAnswer);
     question.correct = question.answers.indexOf(correctAnswer);
   });
-
-  questionsList = questionsList.slice(0, 10);
   return questionsList;
 }
