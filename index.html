@@ -36,7 +36,12 @@
               questions before the time runs out. Remember: for every incorrect answer selected, 
               you will lose 10 seconds of the remaining time.
             </p>
-            <p>Select the level of difficulty:<small><sup>[*]</sup></small></p>
+              <p id="description-toggle">Select the level of difficulty:</p>
+            <div class="difficulty-description" id="difficulty-description">
+              <small>
+                By selecting difficulty level, you are choosing the number of question presented to you - easy: 10, medium: 15 and hard: 20. Each level has it's own timer based on the amount of questions. Questions and answers are randomised.
+              </small>
+            </div>
             <div class="start-options-wrapper" id="start-options-wrapper">
               <div class="inline-input-group">
                 <input type="radio"
@@ -64,11 +69,6 @@
             </div>
             </div>
             <button id="start" class="reveal">Start quiz</button>
-            <div class="difficulty-description">
-              <small>
-                [*] - By selecting difficulty level, you are choosing the number of question presented to you - easy: 10, medium: 15 and hard: 20. Each level has it's own timer based on the amount of questions. Questions and answers are randomised.
-              </small>
-            </div>
           </div>
 
           <div id="questions" class="hide">
