@@ -283,7 +283,8 @@ button code {
 
 button code {
   font-size: 1.15rem;
-  padding: 0.25rem;
+  line-height: 1.5;
+  padding: 0.25rem 0.5rem;
   vertical-align: text-top;
 }
 

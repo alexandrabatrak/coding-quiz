@@ -116,8 +116,8 @@ export function questions() {
       title:
         'What is the difference between a class and a constructor function?',
       answers: [
-        'Classes use the keyword "class" while constructor functions use the keyword "function"',
-        'Constructor functions use the keyword "class" while classes use the keyword "function"',
+        'Classes use the keyword <code>class</code> while constructor functions use the keyword <code>function</code>',
+        'Constructor functions use the keyword <code>class</code> while classes use the keyword <code>function</code>',
         'Classes can only be used with objects, while constructor functions can be used with any data type',
         'Constructor functions can only be used with objects, while classes can be used with any data type',
         'Classes provide a way to create multiple instances, while constructor functions can only create a single instance',
@@ -133,8 +133,8 @@ export function questions() {
         'Instance methods are called on the class, while static methods are called on an object',
         'Static methods can only be used with the class, while instance methods can be used with any object',
         'Instance methods can only be used with the class, while static methods can be used with any object',
-        'Static methods do not have access to the "this" keyword, while instance methods do',
-        'Instance methods do not have access to the "this" keyword, while static methods do',
+        'Static methods do not have access to the <code>this</code> keyword, while instance methods do',
+        'Instance methods do not have access to the <code>this</code> keyword, while static methods do',
       ],
       correct: 0,
     },
