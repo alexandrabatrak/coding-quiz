@@ -189,13 +189,14 @@ input[type='radio'] {
   height: 1rem;
   border: 0.15rem solid white;
   border-radius: 50%;
+  overflow: hidden;
 }
 
 input[type='radio']::before {
   content: '';
   position: absolute;
-  top: 0;
-  left: 0;
+  top: -2px;
+  left: -2px;
   width: 0.75em;
   height: 0.75em;
   border-radius: 50%;
