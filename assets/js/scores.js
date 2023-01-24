@@ -6,8 +6,14 @@ export function scores(score) {
   const initials = document.getElementById('initials');
   const submit = document.getElementById('submit');
 
-  submit.addEventListener('click', (e) => {
-    e.preventDefault();
+  submit.addEventListener('click', submitInitials);
+  initials.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      submitInitials();
+    }
+  });
+  function submitInitials() {
     if (validateInitials(initials)) {
       let highScoresObj = {
         score: score,
@@ -17,7 +23,6 @@ export function scores(score) {
         highScores.push(highScoresObj);
         localStorage.setItem('highScores', JSON.stringify(highScores));
       }
-      console.log(highScores);
       initials.value = '';
 
       // endScreen
@@ -41,7 +46,7 @@ export function scores(score) {
     } else {
       return;
     }
-  });
+  }
 }
 
 // validate initials input
