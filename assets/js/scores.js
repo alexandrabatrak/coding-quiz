@@ -52,12 +52,12 @@ export function scores(score) {
 
 // validate initials input
 function validateInitials(initials) {
-  const regEx = /^[a-zA-Z]{2}$/;
+  const regEx = /^[a-zA-Z]{3}$/;
   if (regEx.test(initials.value)) {
     return true;
   } else {
     initials.value = '';
-    initials.placeholder = 'Please, enter only 2 letters';
+    initials.placeholder = 'Please, enter max 3 letters';
     return false;
   }
 }
