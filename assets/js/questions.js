@@ -354,8 +354,6 @@ export function questions() {
     },
   ];
 
-  console.log(questionsList.length);
-
   // Shuffle the array using the Fisher-Yates shuffle algorithm
   for (let i = questionsList.length - 1; i > 0; i--) {
     let j = Math.floor(Math.random() * (i + 1));
