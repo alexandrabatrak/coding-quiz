@@ -7,7 +7,11 @@ window.addEventListener('load', () => {
   setTimeout(() => {
     loader.classList.add('remove');
     setTimeout(() => {
+      // select elements inside start-screen omitting 'difficulty-description' to only show it on hover
       [...startScreen.children].forEach((child) => {
+        if (child.id === 'difficulty-description') {
+          return;
+        }
         child.classList.add('show');
       });
     }, 200);
@@ -44,6 +48,7 @@ let time;
 let countdownTimer;
 
 let questionAmount = '10';
+// get user select option and set amount of questions based on the option chosen
 function questionsAmount() {
   let questionsList = questions();
   difficultyChoice.forEach((option) => {
@@ -65,13 +70,14 @@ let answerButtons;
 function questionShow() {
   questionTitle.classList.remove('show');
   let question = questionsList[questionIndex];
-  questionTitle.innerText = question.title;
+  questionTitle.innerHTML = question.title;
   setTimeout(() => {
     questionTitle.classList.add('show');
   }, 200);
   choices.innerHTML = question.answers
     .map(
       (answer, index) =>
+        // index + 1 for CSS to show question number on :before
         `<button type="button" value="${answer}" id="answer-${index}" data-index=${
           index + 1
         } class="quiz-option reveal">${answer}</button>`
@@ -169,7 +175,7 @@ function startQuiz() {
     questionsDiv.classList.remove('hide');
     questionShow();
   }, 1000);
-  time = questionAmount * 15;
+  time = questionAmount * 11;
   startTimer();
 }
 
@@ -186,3 +192,17 @@ function endQuiz() {
   finalScore.textContent = score;
   scores(score);
 }
+
+// difficulty description appearance
+const difficultyRef = document.getElementById('description-toggle');
+const difficultyDesc = document.getElementById('difficulty-description');
+const wrapper = document.getElementsByClassName('wrapper');
+
+difficultyRef.addEventListener('mouseover', (e) => {
+  difficultyDesc.classList.add('show');
+});
+wrapper[0].addEventListener('mouseleave', (e) => {
+  if (e.target !== difficultyRef) {
+    difficultyDesc.classList.remove('show');
+  }
+});
