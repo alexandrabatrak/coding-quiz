@@ -52,7 +52,7 @@ export function scores(score) {
 
 // validate initials input
 function validateInitials(initials) {
-  const regEx = /^[a-zA-Z]{3}$/;
+  const regEx = /^[a-zA-Z]{2,3}$/;
   if (regEx.test(initials.value)) {
     return true;
   } else {
