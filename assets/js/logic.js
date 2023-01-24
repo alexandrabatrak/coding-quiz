@@ -196,18 +196,19 @@ function endQuiz() {
 
 // difficulty description appearance
 // TODO: Add a caret and display description on a click instead (accordeon)
-const difficultyRef = document.getElementById('description-toggle');
+const difficultyToggle = document.getElementById('description-toggler');
 const difficultyDesc = document.getElementById('difficulty-description');
 const wrapper = document.getElementsByClassName('wrapper');
 
-difficultyRef.addEventListener('mouseover', (e) => {
-  difficultyDesc.classList.add('show');
+difficultyToggle.addEventListener('click', (e) => {
+  difficultyDesc.classList.toggle('show');
+  difficultyToggle.classList.toggle('active');
 });
-wrapper[0].addEventListener('mouseleave', (e) => {
-  if (e.target !== difficultyRef) {
-    difficultyDesc.classList.remove('show');
-  }
-});
+// wrapper[0].addEventListener('mouseleave', (e) => {
+//   if (e.target !== difficultyToggle) {
+//     difficultyDesc.classList.remove('show');
+//   }
+// });
 
 // sound toggle
 soundToggle.addEventListener('change', () => {
