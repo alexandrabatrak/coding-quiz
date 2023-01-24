@@ -152,7 +152,7 @@ li:nth-child(odd) {
 
 /* UTILITY */
 .hide {
-  display: none;
+  display: none !important;
 }
 
 .reveal {
