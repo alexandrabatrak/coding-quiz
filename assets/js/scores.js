@@ -3,7 +3,6 @@ let highScoresOl = document.getElementById('highscores');
 const endScreen = document.getElementById('end-screen');
 
 export function scores(score) {
-  const finalScore = document.getElementById('final-score');
   const initials = document.getElementById('initials');
   const submit = document.getElementById('submit');
 
