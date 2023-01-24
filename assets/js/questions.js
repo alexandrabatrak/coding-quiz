@@ -273,7 +273,7 @@ export function questions() {
   let x = "5"; 
   console.log(x + 3)
         </code></pre>`,
-      answers: ['8', '53', '5undefined', '53', 'null', 'error'],
+      answers: ['8', '53', '5undefined', '"53"', 'null', 'error'],
       correct: 1,
     },
     {
