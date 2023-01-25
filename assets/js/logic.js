@@ -118,7 +118,7 @@ function processAnswer(e) {
     feedback.classList.add('show');
     feedback.innerText = 'Correct!';
     // increment score value
-    score++;
+    score += 2;
   } else {
     answerButton.classList.add('wrong');
     if (soundPreference) {
@@ -128,6 +128,9 @@ function processAnswer(e) {
     feedback.innerText = 'Wrong!';
     // decrease time
     time -= 10;
+    if (score > 0) {
+      score--;
+    }
   }
   answerButtons.forEach((answerButton) => {
     answerButton.removeEventListener('click', processAnswer);
