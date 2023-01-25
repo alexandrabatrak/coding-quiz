@@ -1,5 +1,5 @@
 let highScores = JSON.parse(localStorage.getItem('highScores')) || [];
-let highScoresOl = document.getElementById('highscores');
+let highScoresDiv = document.getElementById('highscores');
 const endScreen = document.getElementById('end-screen');
 
 export function scores(score) {
@@ -71,14 +71,19 @@ function validateInitials(initials) {
 const clear = document.getElementById('clear');
 if (clear) {
   clear.addEventListener('click', () => {
-    localStorage.removeItem('highScores');
-    highScoresOl.innerHTML = '';
+    highScoresDiv
+      .querySelectorAll('.reveal')
+      .forEach((element) => element.classList.remove('show'));
+    setTimeout(() => {
+      localStorage.removeItem('highScores');
+      highScoresDiv.innerHTML = '';
+    }, 300);
   });
 }
 
 // get the scores
 function getHighScores() {
-  if (!highScoresOl) {
+  if (!highScoresDiv) {
     return;
   }
   scores = JSON.parse(localStorage.getItem('highScores')) || [];
@@ -88,7 +93,7 @@ function getHighScores() {
   let highestScores = scores.slice(0, 10);
   // create table if more than 1 score saved
   if (scores.length > 0) {
-    highScoresOl.innerHTML = `
+    highScoresDiv.innerHTML = `
       <table>
         <thead>
           <tr class="reveal">
