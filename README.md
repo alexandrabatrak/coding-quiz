@@ -4,10 +4,11 @@ Bootcamp week 06: Code quiz :yellow_heart:
 
 ## About
 
-_This app runs in the browser, and features dynamically updated HTML and CSS powered by JavaScript._
+> Coding: The process of screaming at a computer monitor for hours until realizing that the problem was a missing semi-colon or comma; _~Urban Dictionary_
 
 The quiz allows to test one's knowledge of JavaScript fundamentals with a timed multiple choice quiz. For every wrong answer user is penalised by losing 10 seconds of the remaining time. Upon completion (or time run out) user is able to save their score, so they can challenge themselves over and over, until they get all the answers right.
 
+_This app runs in the browser, and features dynamically updated HTML and CSS powered by JavaScript._
 **As always, built with accessibility in mind**. Tested in Chrome, Firefox and Opera.
 
 ### Features:
