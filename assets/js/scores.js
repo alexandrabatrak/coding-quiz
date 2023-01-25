@@ -8,17 +8,20 @@ export function scores(score) {
 
   submit.addEventListener('click', submitInitials);
   initials.addEventListener('keypress', (e) => {
+    // callback submit with enter
     if (e.key === 'Enter') {
       e.preventDefault();
       submitInitials();
     }
   });
   function submitInitials() {
+    // make sure we only getting the good stuff (no nasty numbers)
     if (validateInitials(initials)) {
       let highScoresObj = {
         score: score,
         initials: initials.value.toUpperCase(),
       };
+      // to save memory, let's not store more than 100. Even that is too much as we only display 10
       if (highScores.length <= 100) {
         highScores.push(highScoresObj);
         localStorage.setItem('highScores', JSON.stringify(highScores));
@@ -26,6 +29,7 @@ export function scores(score) {
       initials.value = '';
 
       // endScreen
+      // create some buttons for user to navigate better
       let buttonContainer = document.createElement('div');
       buttonContainer.classList.add('button-container', 'reveal');
       let startAgainBtn = document.createElement('a');
@@ -42,6 +46,7 @@ export function scores(score) {
       buttonContainer.appendChild(highScoresBtn);
       endScreen.appendChild(buttonContainer);
       setTimeout(() => {
+        // fade-in, of course
         buttonContainer.classList.add('show');
       }, 200);
     } else {
@@ -107,9 +112,9 @@ function getHighScores() {
       </table>`;
   }
   setTimeout(() => {
+    // fade-in the whole .reveal party
     const elements = document.querySelectorAll('.reveal');
     elements.forEach((element) => element.classList.add('show'));
   }, 0);
 }
-
 getHighScores();

@@ -355,18 +355,28 @@ export function questions() {
   ];
 
   // Shuffle the array using the Fisher-Yates shuffle algorithm
+  /* The loop goes backwards, and we take index element and swap places with random indexed element.
+  Fun quote from english disctionary: "shuffling = to move similar things from one position or place to another, 
+  often to give an appearance of activity when nothing useful is being done" */
   for (let i = questionsList.length - 1; i > 0; i--) {
     let j = Math.floor(Math.random() * (i + 1));
     [questionsList[i], questionsList[j]] = [questionsList[j], questionsList[i]];
   }
-  // Randomize the answers array for each question
+
+  // Randomize the answers array for each question and display only 4
   questionsList.forEach((question) => {
+    // set the correct
     let correctAnswer = question.answers[question.correct];
     let answersToRandomise = question.answers.slice(0);
+    // remove the correct one, we don't want it to get lost
     answersToRandomise.splice(question.correct, 1);
+    // mix them all now
     answersToRandomise.sort(() => Math.random() - 0.5);
+    // we only want 3 of them
     question.answers = answersToRandomise.slice(0, 3);
+    // one more time, mix mix mix and add some *spice*, correct asnwer
     question.answers.splice(Math.floor(Math.random() * 4), 0, correctAnswer);
+    // we still want to know what the correct answer is after all this mixing and cutting
     question.correct = question.answers.indexOf(correctAnswer);
   });
   return questionsList;
