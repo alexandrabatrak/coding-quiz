@@ -17,6 +17,7 @@ _This app runs in the browser, and features dynamically updated HTML and CSS pow
 - [x] Option for user to select amount of questions (10/15/20)
 - [x] Randomised questions, each with 4 randomised answer options
 - [x] Time penalty on incorrect answer
+- [x] Get 2 points for the correct answer, lose 1 point for incorrect
 - [x] Client-side scores saving and display of the top 10 scores (to save memory only the last 100 scores are stored)
 - [x] UI and sound effect feedback on correct/incorrect answer choice, variable ending sound based on the reason game ended - either all questions are answered or time runs out
 - [x] Option to switch the sound off (on by default)
