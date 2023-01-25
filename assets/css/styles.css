@@ -418,7 +418,7 @@ footer p {
 #description-toggler::after {
   content: '';
   display: inline-block;
-  width: 0.6rem;
+  width: 0.61rem;
   height: 0.1rem;
   position: absolute;
   top: 0.5rem;
