@@ -4,10 +4,11 @@ Bootcamp week 06: Code quiz :yellow_heart:
 
 ## About
 
-_This app runs in the browser, and features dynamically updated HTML and CSS powered by JavaScript._
+> Coding: The process of screaming at a computer monitor for hours until realizing that the problem was a missing semi-colon or comma; _~Urban Dictionary_
 
 The quiz allows to test one's knowledge of JavaScript fundamentals with a timed multiple choice quiz. For every wrong answer user is penalised by losing 10 seconds of the remaining time. Upon completion (or time run out) user is able to save their score, so they can challenge themselves over and over, until they get all the answers right.
 
+_This app runs in the browser, and features dynamically updated HTML and CSS powered by JavaScript._
 **As always, built with accessibility in mind**. Tested in Chrome, Firefox and Opera.
 
 ### Features:
@@ -25,7 +26,10 @@ The quiz allows to test one's knowledge of JavaScript fundamentals with a timed 
 
 ### [View Project](https://alexandrabatrak.github.io/coding-quiz)
 
-<!-- ![Screenshot](/assets/images/screenshot.png) -->
+![Start screenshot](/assets/images/start-screenshot.png)
+![Quiz screenshot](/assets/images/quiz-screenshot.png)
+![Highscores screenshot](/assets/images/highscores-screenshot.png)
+![Mobile screenshot](/assets/images/mobile-screenshot.png)
 
 ### What I've learned
 
@@ -46,6 +50,7 @@ _researched while working on this project_
 - [Bunny Fonts](https://fonts.bunny.net/family/baskervville) :rabbit2: & [The Baskervville Project Authors](https://github.com/anrt-type/ANRT-Baskervville)
 - [Freesound](https://freesound.org/) :musical_note:, [Correct/incorrect sfx by Sjonas88](https://freesound.org/people/Sjonas88/) & [Game over sfx by Baltiyar13](https://freesound.org/people/Baltiyar13/)
 - [Pure CSS Speaker icon by Ates Goral](https://codepen.io/atesgoral/details/RLPGaZ)
+- [Pure CSS Arrow icon by Simon Breiter (edited)](https://codepen.io/simonbreiter/pen/oLJrKy)
 - Edx for `starter code` :bone:
 - My brain :brain: for working overtime for the past 6 weeks
 
