@@ -52,7 +52,6 @@ _researched while working on this project_
 - [Freesound](https://freesound.org/) :musical_note:, [Correct/incorrect sfx by Sjonas88](https://freesound.org/people/Sjonas88/) & [Game over sfx by Baltiyar13](https://freesound.org/people/Baltiyar13/)
 - [Pure CSS Speaker icon by Ates Goral](https://codepen.io/atesgoral/details/RLPGaZ)
 - [Pure CSS Arrow icon by Simon Breiter (edited)](https://codepen.io/simonbreiter/pen/oLJrKy)
-- Edx for `starter code` :bone:
 - My brain :brain: for working overtime for the past 6 weeks
 
 ## License
