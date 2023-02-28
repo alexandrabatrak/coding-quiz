@@ -1,6 +1,6 @@
 # Coding quiz
 
-Bootcamp week 06: Code quiz :yellow_heart:
+:yellow_heart:
 
 ## About
 
