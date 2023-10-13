@@ -89,7 +89,7 @@ button,
   display: inline-block;
   cursor: pointer;
   font-size: 1.25rem;
-  font-family: 'Baskerville', serif;
+  font-family: 'Baskervville', serif;
   color: var(--black);
   background-color: transparent;
   border: var(--border);
